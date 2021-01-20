@@ -1,7 +1,6 @@
 call plug#begin()
 	Plug 'terryma/vim-multiple-cursors'
 	Plug 'mattn/emmet-vim'
-	Plug 'jiangmiao/auto-pairs'
 	Plug 'sheerun/vim-polyglot'
 	Plug 'morhetz/gruvbox'
 	Plug 'arcticicestudio/nord-vim'

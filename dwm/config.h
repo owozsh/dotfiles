@@ -66,6 +66,7 @@ static const char *browser[]  = { "brave-browser", NULL };
 static const char *fm[]  = { "st", "nnn", NULL };
 static const char *sc[]  = { "gnome-screenshot", "-a", NULL };
 static const char *scc[]  = { "gnome-screenshot", NULL };
+static const char *cal[]  = { "st", "calcurse", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -75,6 +76,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_e,      spawn,          {.v = fm } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = sc } },
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = scc } },
+	{ MODKEY,                       XK_c,      spawn,          {.v = cal } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
