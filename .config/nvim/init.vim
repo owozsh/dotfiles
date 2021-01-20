@@ -7,6 +7,7 @@ call plug#begin()
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'scrooloose/nerdtree'
 	Plug 'ryanoasis/vim-devicons'
+	Plug 'dylanaraps/wal.vim'
 call plug#end()
 
 " emmet
@@ -14,7 +15,7 @@ let g:user_emmet_leader_key=','
 
 " theme
 syntax on
-colorscheme gruvbox
+colorscheme wal
 hi clear CursorLineNR
 hi clear LineNR
 hi LineNR guibg=NONE
@@ -23,7 +24,7 @@ hi CursorLine ctermfg=white
 
 " Shortcuts
 autocmd filetype cpp nnoremap <F6> :w <bar> exec '!g++ -o %< %' <CR> :term ./%< <CR>
-autocmd filetype tex nnoremap <F4> :w <bar> exec '!pdflatex %'<CR>
+autocmd filetype tex nnoremap <F4> :w <bar> exec '!pdflatex % ; zathura %<.pdf'<CR>
 
 " nvim settings
 set hidden

@@ -1,4 +1,5 @@
 exec nitrogen --restore &
+wal -R
 setxkbmap -option caps:escape
 dwmstatus 2>&1 >/dev/null &
-exec ~/dwm/dwm
+exec ~/.config/dwm/dwm
