@@ -37,7 +37,7 @@ set shiftwidth=2
 set noruler
 set laststatus=0
 set noshowcmd
-set cmdheight=2
+set cmdheight=1
 set fdm=indent
 set nofoldenable
 set clipboard+=unnamedplus
