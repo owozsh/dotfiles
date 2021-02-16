@@ -15,7 +15,7 @@ let g:user_emmet_leader_key=','
 
 " theme
 syntax on
-colorscheme wal
+colorscheme gruvbox
 hi clear CursorLineNR
 hi clear LineNR
 hi LineNR guibg=NONE
@@ -41,6 +41,13 @@ set cmdheight=1
 set fdm=indent
 set nofoldenable
 set clipboard+=unnamedplus
+
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " nerdtree
 let g:NERDTreeShowHidden = 1
