@@ -8,6 +8,7 @@ call plug#begin()
 	Plug 'scrooloose/nerdtree'
 	Plug 'ryanoasis/vim-devicons'
 	Plug 'dylanaraps/wal.vim'
+	Plug 'm-pilia/vim-smarthome'
 call plug#end()
 
 " emmet
@@ -48,6 +49,14 @@ inoremap <A-j> <Esc>:m .+1<CR>==gi
 inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
+
+" smart home/end
+nmap <silent><Home> :call smarthome#SmartHome('n')<cr>
+nmap <silent><End> :call smarthome#SmartEnd('n')<cr>
+imap <silent><Home> <C-r>=smarthome#SmartHome('i')<cr>
+imap <silent><End> <C-r>=smarthome#SmartEnd('i')<cr>
+vmap <silent><Home> <Esc>:call smarthome#SmartHome('v')<cr>
+vmap <silent><End> <Esc>:call smarthome#SmartEnd('v')<cr>
 
 " nerdtree
 let g:NERDTreeShowHidden = 1
