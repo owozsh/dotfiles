@@ -24,8 +24,10 @@ hi Normal guibg=NONE ctermbg=NONE
 hi CursorLine ctermfg=white
 
 " Shortcuts
-autocmd filetype cpp nnoremap <F6> :w <bar> exec '!g++ -o %< %' <CR> :term ./%< <CR>
+" autocmd filetype cpp nnoremap <F6> :w <bar> exec '!g++ -o %< %' <CR> :term ./%< <CR>
+autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ -o %< %' <CR> :!gnome-terminal --tab -- zsh -c 'g++ -o %< %; ./%<; exec zsh'<CR>
 autocmd filetype tex nnoremap <F4> :w <bar> exec '!pdflatex % ; zathura %<.pdf'<CR>
+autocmd filetype java nnoremap <F4> :w <bar> exec '!javac %' <CR> :!gnome-terminal --tab -- zsh -c 'java %<; exec zsh'<CR>
 
 " nvim settings
 set hidden
