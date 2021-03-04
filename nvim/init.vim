@@ -8,6 +8,7 @@ call plug#begin()
 	Plug 'scrooloose/nerdtree'
 	Plug 'ryanoasis/vim-devicons'
 	Plug 'dylanaraps/wal.vim'
+	Plug 'mcchrish/nnn.vim'
 	Plug 'm-pilia/vim-smarthome'
 call plug#end()
 
