@@ -11,8 +11,9 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 export EDITOR="nvim"
 
-NNN_FIFO=/tmp/nnn.fifo
-export NNN_PLUG='f:finder;o:fzopen;p:mocplay;d:diffs;t:nmount;v:imgview'
+export NNN_FIFO=/tmp/nnn.fifo
+export NNN_BMS='A:~/Desktop/茶/;J:~/Desktop/茶/japanese/;D:~/Developer/'
+export NNN_PLUG='p:preview-tui;a:preview-tabbed'
 
 alias org="nvim ~/Desktop/茶/org/.org.md"
 alias cnvim="nvim ~/.config/nvim/init.vim"

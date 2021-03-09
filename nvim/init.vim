@@ -9,6 +9,8 @@ call plug#begin()
 	Plug 'ryanoasis/vim-devicons'
 	Plug 'dylanaraps/wal.vim'
 	Plug 'mcchrish/nnn.vim'
+	Plug 'arthurxavierx/vim-unicoder'
+	Plug 'dhruvasagar/vim-table-mode'
 	Plug 'm-pilia/vim-smarthome'
 call plug#end()
 
