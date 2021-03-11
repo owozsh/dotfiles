@@ -3,11 +3,7 @@ call plug#begin()
 	Plug 'mattn/emmet-vim'
 	Plug 'sheerun/vim-polyglot'
 	Plug 'morhetz/gruvbox'
-	Plug 'arcticicestudio/nord-vim'
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
-	Plug 'scrooloose/nerdtree'
-	Plug 'ryanoasis/vim-devicons'
-	Plug 'dylanaraps/wal.vim'
 	Plug 'mcchrish/nnn.vim'
 	Plug 'arthurxavierx/vim-unicoder'
 	Plug 'dhruvasagar/vim-table-mode'
@@ -20,40 +16,62 @@ let g:user_emmet_leader_key=','
 " theme
 syntax on
 colorscheme gruvbox
-hi clear CursorLineNR
-hi clear LineNR
-hi LineNR guibg=NONE
-hi Normal guibg=NONE ctermbg=NONE
-hi CursorLine ctermfg=white
+set cursorline
+"hi clear CursorLineNR
+"hi clear LineNR
+"hi LineNR guibg=NONE
+"hi Normal guibg=NONE ctermbg=NONE
+"hi CursorLine ctermfg=white
+
 
 " Shortcuts
-" autocmd filetype cpp nnoremap <F6> :w <bar> exec '!g++ -o %< %' <CR> :term ./%< <CR>
-autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ -o %< %' <CR> :!gnome-terminal --tab -- zsh -c 'g++ -o %< %; ./%<; exec zsh'<CR>
-autocmd filetype tex nnoremap <F4> :w <bar> exec '!pdflatex % ; zathura %<.pdf'<CR>
-autocmd filetype java nnoremap <F4> :w <bar> exec '!javac %' <CR> :!gnome-terminal --tab -- zsh -c 'java %<; exec zsh'<CR>
+autocmd filetype java nnoremap <F5> :w <bar> exec '!javac %' <CR> :tabnew % <bar> term java %< <CR>
+autocmd filetype c nnoremap <F5> :w <bar> exec '!gcc -o %< %' <CR> :tabnew % <bar> term ./%< <CR>
+autocmd filetype tex nnoremap <F5> :w <bar> exec 'autocmd filetype tex nnoremap <F4> :w <bar> exec '!pdflatex % ; zathura %<.pdf'<CR>
+
+nnoremap <F2> :NnnPicker %:p:h<CR>
+nnoremap <F3> :tabnew <bar> term <CR>
+nnoremap <F4> :tabnew % <CR>
+nnoremap <F8> :e ~/uwu/org/.org.md <CR>
+nnoremap <F9> :e ~/.config/nvim/init.vim <CR>
+nnoremap <F10> :tabnew <bar> term tetris <CR>
+
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+
+" Leave terminal mode with esc
+tnoremap <Esc> <C-\><C-n>
 
 " nvim settings
-set hidden
+autocmd TermOpen * startinsert
+"set hidden
 set number
 set relativenumber
 set mouse=a
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-set noruler
-set laststatus=0
-set noshowcmd
+"set noruler
+"set laststatus=0
+"set noshowcmd
 set cmdheight=1
 set fdm=indent
 set nofoldenable
 set clipboard+=unnamedplus
 
-nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
-inoremap <A-j> <Esc>:m .+1<CR>==gi
-inoremap <A-k> <Esc>:m .-2<CR>==gi
-vnoremap <A-j> :m '>+1<CR>gv=gv
-vnoremap <A-k> :m '<-2<CR>gv=gv
+nnoremap <M-j> :m .+1<CR>==
+nnoremap <M-k> :m .-2<CR>==
+inoremap <M-j> <Esc>:m .+1<CR>==gi
+inoremap <M-k> <Esc>:m .-2<CR>==gi
+vnoremap <M-j> :m '>+1<CR>gv=gv
+vnoremap <M-k> :m '<-2<CR>gv=gv
 
 " smart home/end
 nmap <silent><Home> :call smarthome#SmartHome('n')<cr>
@@ -63,13 +81,9 @@ imap <silent><End> <C-r>=smarthome#SmartEnd('i')<cr>
 vmap <silent><Home> <Esc>:call smarthome#SmartHome('v')<cr>
 vmap <silent><End> <Esc>:call smarthome#SmartEnd('v')<cr>
 
-" nerdtree
-let g:NERDTreeShowHidden = 1
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeIgnore = []
-let g:NERDTreeStatusline = ''
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-nnoremap <silent> <C-b> :NERDTreeToggle<CR>
+" NNN
+let g:nnn#command = 'nnn -C -c'
+let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debug' } }
 
 " autocomplete
 let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-python']
