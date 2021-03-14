@@ -49,6 +49,10 @@ nnoremap <CR> o<Esc>
 nnoremap <Space> O<Esc>
 nnoremap <C-d> dd
 
+"nnoremap <leader>3 i#include <stdio.h><CR><CR>int main() {}<ESC>i<CR><T>
+
+iabbrev #i# #include <stdio.h><CR><CR>int main() {}<ESC>i<CR><TAB>
+
 noremap <leader>1 1gt
 noremap <leader>2 2gt
 noremap <leader>3 3gt
@@ -71,6 +75,11 @@ vnoremap <M-k> :m '<-2<CR>gv=gv
 
 nnoremap <S-M-j> yyp
 nnoremap <S-M-k> yyP
+
+nnoremap <Tab> >>
+nnoremap <S-Tab> <<
+vmap <Tab> >gv
+vmap <S-Tab> <gv
 
 " nvim settings
 set hidden
