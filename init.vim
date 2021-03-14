@@ -1,40 +1,53 @@
 call plug#begin()
-	Plug 'terryma/vim-multiple-cursors'
+	Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 	Plug 'mattn/emmet-vim'
 	Plug 'sheerun/vim-polyglot'
 	Plug 'morhetz/gruvbox'
+	Plug 'sainnhe/gruvbox-material'
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'mcchrish/nnn.vim'
 	Plug 'arthurxavierx/vim-unicoder'
 	Plug 'dhruvasagar/vim-table-mode'
+	Plug 'voldikss/vim-floaterm'
+	Plug 'jiangmiao/auto-pairs'
 	Plug 'm-pilia/vim-smarthome'
 call plug#end()
 
 " emmet
 let g:user_emmet_leader_key=','
 
-" theme
-syntax on
-colorscheme gruvbox
-set cursorline
-"hi clear CursorLineNR
-"hi clear LineNR
-"hi LineNR guibg=NONE
-"hi Normal guibg=NONE ctermbg=NONE
-"hi CursorLine ctermfg=white
+" multi
+let g:VM_maps = {}
+let g:VM_mouse_mappings = 1
+let g:VM_maps["Select Cursor Down"] = '<C-j>'
+let g:VM_maps["Select Cursor Up"]   = '<C-j>'
 
+" theme
+let g:gruvbox_material_background = 'soft'
+syntax on
+set termguicolors
+colorscheme gruvbox-material
+set cursorline
 
 " Shortcuts
 autocmd filetype java nnoremap <F5> :w <bar> exec '!javac %' <CR> :tabnew % <bar> term java %< <CR>
-autocmd filetype c nnoremap <F5> :w <bar> exec '!gcc -o %< %' <CR> :tabnew % <bar> term ./%< <CR>
+"autocmd filetype c nnoremap <F5> :w <bar> exec '!gcc -o %< %' <CR> :tabnew % <bar> term ./%< <CR>
+autocmd filetype c nnoremap <F5> :w <bar> FloatermNew --autoclose=0 gcc % -o %< && ./%< <CR>
 autocmd filetype tex nnoremap <F5> :w <bar> exec 'autocmd filetype tex nnoremap <F4> :w <bar> exec '!pdflatex % ; zathura %<.pdf'<CR>
 
 nnoremap <F2> :NnnPicker %:p:h<CR>
-nnoremap <F3> :tabnew <bar> term <CR>
+nnoremap <F3> :FloatermNew --autoclose=1 --height=0.8 --width=0.8<CR>
 nnoremap <F4> :tabnew % <CR>
-nnoremap <F8> :e ~/uwu/org/.org.md <CR>
-nnoremap <F9> :e ~/.config/nvim/init.vim <CR>
-nnoremap <F10> :tabnew <bar> term tetris <CR>
+nnoremap <F6> :FloatermNew --autoclose=1 --height=0.6 --width=0.8 herrie ~/Migrator/media/music/mp3<CR>
+nnoremap <F7> :FloatermNew --autoclose=1 --height=0.6 --width=0.8 spt <CR>
+nnoremap <F8> :e ~/Migrator/org/.org.md <CR>
+nnoremap <F9> :tabnew ~/.config/nvim/init.vim <CR>
+nnoremap <F10> :FloatermNew --autoclose=1 tetris <CR>
+nnoremap <F12> :FloatermToggle! <CR>
+
+nnoremap <CR> o<Esc>
+nnoremap <Space> O<Esc>
+nnoremap <C-d> dd
 
 noremap <leader>1 1gt
 noremap <leader>2 2gt
@@ -47,24 +60,7 @@ noremap <leader>8 8gt
 noremap <leader>9 9gt
 
 " Leave terminal mode with esc
-tnoremap <Esc> <C-\><C-n>
-
-" nvim settings
-autocmd TermOpen * startinsert
-"set hidden
-set number
-set relativenumber
-set mouse=a
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-"set noruler
-"set laststatus=0
-"set noshowcmd
-set cmdheight=1
-set fdm=indent
-set nofoldenable
-set clipboard+=unnamedplus
+tnoremap <leader><Esc> <C-\><C-n>
 
 nnoremap <M-j> :m .+1<CR>==
 nnoremap <M-k> :m .-2<CR>==
@@ -72,6 +68,28 @@ inoremap <M-j> <Esc>:m .+1<CR>==gi
 inoremap <M-k> <Esc>:m .-2<CR>==gi
 vnoremap <M-j> :m '>+1<CR>gv=gv
 vnoremap <M-k> :m '<-2<CR>gv=gv
+
+nnoremap <S-M-j> yyp
+nnoremap <S-M-k> yyP
+
+" nvim settings
+set hidden
+set noruler
+set laststatus=0
+set noshowcmd
+autocmd TermOpen * startinsert
+set number
+set relativenumber
+set mouse=a
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set cmdheight=1
+set fdm=indent
+set nofoldenable
+set clipboard+=unnamedplus
+set nrformats+=alpha
+
 
 " smart home/end
 nmap <silent><Home> :call smarthome#SmartHome('n')<cr>
