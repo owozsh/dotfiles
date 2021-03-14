@@ -51,7 +51,7 @@ nnoremap <C-d> dd
 
 "nnoremap <leader>3 i#include <stdio.h><CR><CR>int main() {}<ESC>i<CR><T>
 
-iabbrev #i# #include <stdio.h><CR><CR>int main() {}<ESC>i<CR><TAB>
+iabbrev #i# #include <stdio.h><CR><CR>int main()
 
 noremap <leader>1 1gt
 noremap <leader>2 2gt
