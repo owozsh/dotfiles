@@ -32,13 +32,13 @@ set cursorline
 " Shortcuts
 autocmd filetype java nnoremap <F5> :w <bar> exec '!javac %' <CR> :tabnew % <bar> term java %< <CR>
 "autocmd filetype c nnoremap <F5> :w <bar> exec '!gcc -o %< %' <CR> :tabnew % <bar> term ./%< <CR>
-autocmd filetype c nnoremap <F5> :w <bar> FloatermNew --autoclose=0 gcc % -o %< && ./%< <CR>
+autocmd filetype c nnoremap <F5> :w <bar> tabnew % <bar> term gcc % -o %< && ./%< <CR>
 autocmd filetype tex nnoremap <F5> :w <bar> exec 'autocmd filetype tex nnoremap <F4> :w <bar> exec '!pdflatex % ; zathura %<.pdf'<CR>
 
 nnoremap <F2> :NnnPicker %:p:h<CR>
 nnoremap <F3> :FloatermNew --autoclose=1 --height=0.8 --width=0.8<CR>
 nnoremap <F4> :tabnew % <CR>
-nnoremap <F6> :FloatermNew --autoclose=1 --height=0.6 --width=0.8 herrie ~/Migrator/media/music/mp3<CR>
+nnoremap <F6> :FloatermNew --autoclose=1 --height=0.6 --width=0.8 herrie ~/Migrator/media/music/mp3<CR><CR>
 nnoremap <F7> :FloatermNew --autoclose=1 --height=0.6 --width=0.8 spt <CR>
 nnoremap <F8> :e ~/Migrator/org/.org.md <CR>
 nnoremap <F9> :tabnew ~/.config/nvim/init.vim <CR>
@@ -49,9 +49,7 @@ nnoremap <CR> o<Esc>
 nnoremap <Space> O<Esc>
 nnoremap <C-d> dd
 
-"nnoremap <leader>3 i#include <stdio.h><CR><CR>int main() {}<ESC>i<CR><T>
-
-iabbrev #i# #include <stdio.h><CR><CR>int main()
+iabbrev #i# #include <stdio.h><CR><CR>int main() {
 
 noremap <leader>1 1gt
 noremap <leader>2 2gt
@@ -113,7 +111,7 @@ let g:nnn#command = 'nnn -C -c'
 let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debug' } }
 
 " autocomplete
-let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-python']
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-python', 'coc-clangd', 'coc-java']
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
