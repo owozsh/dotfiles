@@ -64,6 +64,9 @@ noremap <leader>9 9gt
 " Leave terminal mode with esc
 tnoremap <leader><Esc> <C-\><C-n>
 
+nnoremap <S-j> G
+nnoremap <S-k> gg
+
 nnoremap <M-j> :m .+1<CR>==
 nnoremap <M-k> :m .-2<CR>==
 inoremap <M-j> <Esc>:m .+1<CR>==gi
