@@ -12,14 +12,17 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 export EDITOR="nvim"
 
-export NNN_FIFO=/tmp/nnn.fifo
-export NNN_BMS=''
+export NNN_FIFO='/tmp/nnn.fifo'
 export NNN_PLUG='p:preview-tui;a:preview-tabbed'
+export NNN_BMS=''
 
-alias n="nnn -C -c"
+alias n="nnn -C -o -P a"
 
 alias org="nvim ~/Migrator/org/.org.md"
+
+alias czsh="nvim ~/.zshrc"
 alias cnvim="nvim ~/.config/nvim/init.vim"
+alias ckitty="nvim ~/.config/kitty/kitty.conf"
 
 alias ga="git add ."
 alias gc="git commit -a -m"
@@ -27,4 +30,3 @@ alias gP="git push"
 
 alias sapi="sudo apt install"
 
-alias ckitty="nvim ~/.config/kitty/kitty.conf"

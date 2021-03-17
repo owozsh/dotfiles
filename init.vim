@@ -64,9 +64,6 @@ noremap <leader>9 9gt
 " Leave terminal mode with esc
 tnoremap <leader><Esc> <C-\><C-n>
 
-nnoremap <S-j> G
-nnoremap <S-k> gg
-
 nnoremap <M-j> :m .+1<CR>==
 nnoremap <M-k> :m .-2<CR>==
 inoremap <M-j> <Esc>:m .+1<CR>==gi
@@ -88,6 +85,7 @@ set noruler
 set laststatus=0
 set noshowcmd
 autocmd TermOpen * startinsert
+set nowrap
 set number
 set relativenumber
 set mouse=a
@@ -110,7 +108,7 @@ vmap <silent><Home> <Esc>:call smarthome#SmartHome('v')<cr>
 vmap <silent><End> <Esc>:call smarthome#SmartEnd('v')<cr>
 
 " NNN
-let g:nnn#command = 'nnn -C -c'
+let g:nnn#command = 'nnn -C -o'
 let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debug' } }
 
 " autocomplete
