@@ -1,4 +1,4 @@
-export ZSH="/Users/owozsh/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="lambda-gitster"
 ZSH_DISABLE_COMPFIX="true"
@@ -25,4 +25,6 @@ alias ga="git add ."
 alias gc="git commit -a -m"
 alias gP="git push"
 
-alias br="brew install"
+alias sapi="sudo apt install"
+
+alias ckitty="nvim ~/.config/kitty/kitty.conf"

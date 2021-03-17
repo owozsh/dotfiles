@@ -42,12 +42,12 @@ nnoremap <F6> :FloatermNew --autoclose=1 --height=0.6 --width=0.8 herrie ~/Migra
 nnoremap <F7> :FloatermNew --autoclose=1 --height=0.6 --width=0.8 spt <CR>
 nnoremap <F8> :e ~/Migrator/org/.org.md <CR>
 nnoremap <F9> :tabnew ~/.config/nvim/init.vim <CR>
-nnoremap <F10> :FloatermNew --autoclose=1 tetris <CR>
+nnoremap <F10> :FloatermNew --autoclose=1 --height=0.8 --width=0.6 vitetris <CR>
 nnoremap <F12> :FloatermToggle! <CR>
 
 nnoremap <CR> o<Esc>
 nnoremap <Space> O<Esc>
-nnoremap <C-d> dd
+nnoremap <M-d> dd
 
 iabbrev #i# #include <stdio.h><CR><CR>int main() {
 
