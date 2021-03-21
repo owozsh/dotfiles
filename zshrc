@@ -24,6 +24,8 @@ alias czsh="nvim ~/.zshrc"
 alias cnvim="nvim ~/.config/nvim/init.vim"
 alias ckitty="nvim ~/.config/kitty/kitty.conf"
 
+export CLANGD="/bin/clang-11"
+
 alias ga="git add ."
 alias gc="git commit -a -m"
 alias gP="git push"

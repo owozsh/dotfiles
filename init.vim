@@ -1,5 +1,6 @@
 call plug#begin()
 	Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+	Plug 'junegunn/goyo.vim'
 	Plug 'mattn/emmet-vim'
 	Plug 'sheerun/vim-polyglot'
 	Plug 'morhetz/gruvbox'
@@ -31,8 +32,8 @@ set cursorline
 
 " Shortcuts
 autocmd filetype java nnoremap <F5> :w <bar> exec '!javac %' <CR> :tabnew % <bar> term java %< <CR>
-"autocmd filetype c nnoremap <F5> :w <bar> exec '!gcc -o %< %' <CR> :tabnew % <bar> term ./%< <CR>
 autocmd filetype c nnoremap <F5> :w <bar> tabnew % <bar> term gcc % -o %< && ./%< <CR>
+autocmd filetype python nnoremap <F5> :w <bar> tabnew % <bar> term python3 % <CR>
 autocmd filetype tex nnoremap <F5> :w <bar> exec 'autocmd filetype tex nnoremap <F4> :w <bar> exec '!pdflatex % ; zathura %<.pdf'<CR>
 
 nnoremap <F2> :NnnPicker %:p:h<CR>
@@ -78,6 +79,8 @@ nnoremap <Tab> >>
 nnoremap <S-Tab> <<
 vmap <Tab> >gv
 vmap <S-Tab> <gv
+
+nnoremap <leader>g :Goyo<CR>
 
 " nvim settings
 set hidden
