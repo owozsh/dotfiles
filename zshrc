@@ -16,7 +16,7 @@ export NNN_FIFO='/tmp/nnn.fifo'
 export NNN_PLUG='p:preview-tui;a:preview-tabbed'
 export NNN_BMS=''
 
-alias n="nnn -C -o -P a"
+alias n="nnn -C -o"
 
 alias org="nvim ~/Migrator/org/.org.md"
 
@@ -24,11 +24,11 @@ alias czsh="nvim ~/.zshrc"
 alias cnvim="nvim ~/.config/nvim/init.vim"
 alias ckitty="nvim ~/.config/kitty/kitty.conf"
 
-export CLANGD="/bin/clang-11"
-
 alias ga="git add ."
 alias gc="git commit -a -m"
 alias gP="git push"
 
-alias sapi="sudo apt install"
+alias br="brew install"
+alias brc="brew install --cask"
 
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
