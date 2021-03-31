@@ -1,4 +1,4 @@
-export ZSH="$HOME/.oh-my-zsh"
+ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="lambda-gitster"
 ZSH_DISABLE_COMPFIX="true"
@@ -15,8 +15,9 @@ export EDITOR="nvim"
 export NNN_FIFO='/tmp/nnn.fifo'
 export NNN_PLUG='p:preview-tui;a:preview-tabbed'
 export NNN_BMS=''
+export NNN_OPENER="/usr/local/bin/nvim"
 
-alias n="nnn -C -o"
+alias n="nnn -C -o -c"
 
 alias org="nvim ~/Migrator/org/.org.md"
 

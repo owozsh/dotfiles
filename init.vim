@@ -1,5 +1,6 @@
 call plug#begin()
 	Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 	Plug 'junegunn/goyo.vim'
 	Plug 'mattn/emmet-vim'
 	Plug 'sheerun/vim-polyglot'
@@ -25,6 +26,9 @@ let g:VM_maps["Select Cursor Up"]   = '<C-j>'
 
 " theme
 let g:gruvbox_material_background = 'soft'
+let g:gruvbox_material_enable_bold = 1
+let g:gruvbox_material_enable_italic = 1
+let g:gruvbox_material_transparent_background = 1
 syntax on
 set termguicolors
 colorscheme gruvbox-material
@@ -83,12 +87,13 @@ vmap <S-Tab> <gv
 nnoremap <leader>g :Goyo<CR>
 
 " nvim settings
+map q: <Nop>
+nnoremap Q <nop>
 set hidden
 set noruler
 set laststatus=0
 set noshowcmd
 autocmd TermOpen * startinsert
-set nowrap
 set number
 set relativenumber
 set mouse=a
