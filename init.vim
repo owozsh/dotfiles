@@ -41,9 +41,8 @@ autocmd filetype python nnoremap <F5> :w <bar> tabnew % <bar> term python3 % <CR
 autocmd filetype tex nnoremap <F5> :w <bar> exec 'autocmd filetype tex nnoremap <F4> :w <bar> exec '!pdflatex % ; zathura %<.pdf'<CR>
 
 nnoremap <F2> :NnnPicker %:p:h<CR>
-nnoremap <F3> :FloatermNew --autoclose=1 --height=0.8 --width=0.8<CR>
+nnoremap <F3> :tabnew % <bar> term<CR>
 nnoremap <F4> :tabnew % <CR>
-nnoremap <F6> :FloatermNew --autoclose=1 --height=0.6 --width=0.8 herrie ~/Migrator/media/music/mp3<CR><CR>
 nnoremap <F7> :FloatermNew --autoclose=1 --height=0.6 --width=0.8 spt <CR>
 nnoremap <F8> :e ~/Migrator/org/.org.md <CR>
 nnoremap <F9> :tabnew ~/.config/nvim/init.vim <CR>
