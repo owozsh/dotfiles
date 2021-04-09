@@ -38,7 +38,7 @@ set cursorline
 autocmd filetype java nnoremap <F5> :w <bar> exec '!javac %' <CR> :tabnew % <bar> term java %< <CR>
 autocmd filetype c nnoremap <F5> :w <bar> tabnew % <bar> term gcc % -o %< && ./%< <CR>
 autocmd filetype python nnoremap <F5> :w <bar> tabnew % <bar> term python3 % <CR>
-autocmd filetype tex nnoremap <F5> :w <bar> exec 'autocmd filetype tex nnoremap <F4> :w <bar> exec '!pdflatex % ; zathura %<.pdf'<CR>
+autocmd filetype tex nnoremap <F5> :w <bar> exec '!pdflatex % ; zathura %<.pdf'<CR>
 
 nnoremap <F2> :NnnPicker %:p:h<CR>
 nnoremap <F3> :tabnew % <bar> term<CR>
