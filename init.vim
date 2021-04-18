@@ -28,7 +28,7 @@ let g:VM_maps["Select Cursor Up"]   = '<C-j>'
 let g:gruvbox_material_background = 'soft'
 let g:gruvbox_material_enable_bold = 1
 let g:gruvbox_material_enable_italic = 1
-let g:gruvbox_material_transparent_background = 1
+let g:gruvbox_material_transparent_background = 0
 syntax on
 set termguicolors
 colorscheme gruvbox-material

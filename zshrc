@@ -1,6 +1,6 @@
 ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="lambda-gitster"
+ZSH_THEME="fox"
 
 plugins=(git)
 
@@ -22,15 +22,11 @@ alias org="nvim ~/Migrator/org/org.md"
 
 alias czsh="nvim ~/.zshrc"
 alias cnvim="nvim ~/.config/nvim/init.vim"
-alias ckitty="nvim ~/.config/kitty/kitty.conf"
-
-alias idea="sh ~/.idea_bin/bin/idea.sh"
 
 alias ga="git add ."
 alias gc="git commit -a -m"
 alias gP="git push"
 
-alias di="sudo dnf install"
-
+alias ai="sudo apt install"
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
