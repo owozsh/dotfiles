@@ -4,7 +4,6 @@ call plug#begin()
 	Plug 'junegunn/goyo.vim'
 	Plug 'mattn/emmet-vim'
 	Plug 'sheerun/vim-polyglot'
-	Plug 'morhetz/gruvbox'
 	Plug 'sainnhe/gruvbox-material'
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'mcchrish/nnn.vim'
@@ -31,8 +30,8 @@ let g:gruvbox_material_enable_italic = 1
 let g:gruvbox_material_transparent_background = 0
 syntax on
 set termguicolors
-colorscheme gruvbox-material
 set cursorline
+colorscheme owo
 
 " Shortcuts
 autocmd filetype java nnoremap <F5> :w <bar> exec '!javac %' <CR> :tabnew % <bar> term java %< <CR>
