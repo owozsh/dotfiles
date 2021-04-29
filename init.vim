@@ -4,13 +4,14 @@ call plug#begin()
 	Plug 'junegunn/goyo.vim'
 	Plug 'mattn/emmet-vim'
 	Plug 'sheerun/vim-polyglot'
-	Plug 'sainnhe/gruvbox-material'
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'mcchrish/nnn.vim'
 	Plug 'arthurxavierx/vim-unicoder'
 	Plug 'dhruvasagar/vim-table-mode'
 	Plug 'voldikss/vim-floaterm'
 	Plug 'jiangmiao/auto-pairs'
+	Plug 'owozsh/amora'
+	Plug 'dylanaraps/wal.vim'
 	Plug 'm-pilia/vim-smarthome'
 call plug#end()
 
@@ -23,16 +24,6 @@ let g:VM_mouse_mappings = 1
 let g:VM_maps["Select Cursor Down"] = '<C-j>'
 let g:VM_maps["Select Cursor Up"]   = '<C-j>'
 
-" theme
-let g:gruvbox_material_background = 'soft'
-let g:gruvbox_material_enable_bold = 1
-let g:gruvbox_material_enable_italic = 1
-let g:gruvbox_material_transparent_background = 0
-syntax on
-set termguicolors
-set cursorline
-colorscheme owo
-
 " Shortcuts
 autocmd filetype java nnoremap <F5> :w <bar> exec '!javac %' <CR> :tabnew % <bar> term java %< <CR>
 autocmd filetype c nnoremap <F5> :w <bar> tabnew % <bar> term gcc % -o %< && ./%< <CR>
@@ -43,7 +34,6 @@ nnoremap <F2> :NnnPicker %:p:h<CR>
 nnoremap <F3> :tabnew % <bar> term<CR>
 nnoremap <F4> :tabnew % <CR>
 nnoremap <F7> :FloatermNew --autoclose=1 --height=0.6 --width=0.8 spt <CR>
-nnoremap <F8> :e ~/Migrator/org/.org.md <CR>
 nnoremap <F9> :tabnew ~/.config/nvim/init.vim <CR>
 nnoremap <F10> :FloatermNew --autoclose=1 --height=0.8 --width=0.6 vitetris <CR>
 nnoremap <F12> :FloatermToggle! <CR>
@@ -84,26 +74,22 @@ vmap <S-Tab> <gv
 
 nnoremap <leader>g :Goyo<CR>
 
-" nvim settings
+"""" nvim settings
+" for coc
+set hidden
+set updatetime=300
+set shortmess+=c
 map q: <Nop>
 nnoremap Q <nop>
-set hidden
-set noruler
-set laststatus=0
-set noshowcmd
 autocmd TermOpen * startinsert
 set number
 set relativenumber
 set mouse=a
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-set cmdheight=1
-set fdm=indent
-set nofoldenable
 set clipboard+=unnamedplus
-set nrformats+=alpha
 
+set nrformats+=alpha
+set shiftwidth=2
+set expandtab
 
 " smart home/end
 nmap <silent><Home> :call smarthome#SmartHome('n')<cr>
@@ -119,6 +105,7 @@ let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debu
 
 " autocomplete
 let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-python', 'coc-clangd', 'coc-java']
+
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -129,3 +116,26 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" theme
+syntax on
+set termguicolors
+set cursorline
+let g:mode = 'focus'
+colorscheme amora
