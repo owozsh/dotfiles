@@ -13,6 +13,7 @@ export EDITOR="nvim"
 
 export NNN_FIFO='/tmp/nnn.fifo'
 export NNN_PLUG='p:preview-tui;a:preview-tabbed'
+export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
 export NNN_BMS=''
 export NNN_OPENER="/usr/local/bin/nvim"
 

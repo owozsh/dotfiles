@@ -11,8 +11,9 @@ call plug#begin()
 	Plug 'voldikss/vim-floaterm'
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'owozsh/amora'
-	Plug 'dylanaraps/wal.vim'
+	Plug 'ap/vim-css-color'
 	Plug 'm-pilia/vim-smarthome'
+	Plug 'uiiaoo/java-syntax.vim'
 call plug#end()
 
 " emmet
@@ -86,6 +87,7 @@ set number
 set relativenumber
 set mouse=a
 set clipboard+=unnamedplus
+set autochdir
 
 set nrformats+=alpha
 set shiftwidth=2
@@ -107,9 +109,9 @@ let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debu
 let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-python', 'coc-clangd', 'coc-java']
 
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+			\ pumvisible() ? "\<C-n>" :
+			\ <SID>check_back_space() ? "\<TAB>" :
+			\ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
@@ -131,11 +133,20 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+"set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " theme
-syntax on
 set termguicolors
-set cursorline
 let g:mode = 'focus'
+"set cursorline
+syntax enable
 colorscheme amora
+
+set noshowmode
+set noruler
+set laststatus=0
+set noshowcmd
+set cmdheight=1
+
+" Java Syntax
+highlight link javaIdentifier NONE
