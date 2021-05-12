@@ -9,11 +9,11 @@ call plug#begin()
 	Plug 'arthurxavierx/vim-unicoder'
 	Plug 'dhruvasagar/vim-table-mode'
 	Plug 'voldikss/vim-floaterm'
-	Plug 'jiangmiao/auto-pairs'
+	Plug 'Raimondi/delimitMate'
 	Plug 'owozsh/amora'
 	Plug 'ap/vim-css-color'
-	Plug 'm-pilia/vim-smarthome'
 	Plug 'uiiaoo/java-syntax.vim'
+	Plug 'm-pilia/vim-smarthome'
 call plug#end()
 
 " emmet
@@ -28,6 +28,7 @@ let g:VM_maps["Select Cursor Up"]   = '<C-j>'
 " Shortcuts
 autocmd filetype java nnoremap <F5> :w <bar> exec '!javac %' <CR> :tabnew % <bar> term java %< <CR>
 autocmd filetype c nnoremap <F5> :w <bar> tabnew % <bar> term gcc % -o %< && ./%< <CR>
+autocmd filetype cpp nnoremap <F5> :w <bar> tabnew % <bar> term g++ % -o %< && ./%< <CR>
 autocmd filetype python nnoremap <F5> :w <bar> tabnew % <bar> term python3 % <CR>
 autocmd filetype tex nnoremap <F5> :w <bar> exec '!pdflatex % ; zathura %<.pdf'<CR>
 
@@ -137,10 +138,12 @@ augroup end
 
 " theme
 set termguicolors
-let g:mode = 'focus'
+"let g:mode = 'focus'
 "set cursorline
 syntax enable
 colorscheme amora
+hi Normal guibg=NONE ctermbg=NONE
+hi LineNr guibg=NONE ctermbg=NONE
 
 set noshowmode
 set noruler
