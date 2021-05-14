@@ -13,6 +13,8 @@ call plug#begin()
 	Plug 'owozsh/amora'
 	Plug 'ap/vim-css-color'
 	Plug 'uiiaoo/java-syntax.vim'
+	Plug 'dkarter/bullets.vim'
+	Plug 'embark-theme/vim', { 'as': 'embark' }
 	Plug 'm-pilia/vim-smarthome'
 call plug#end()
 
@@ -138,11 +140,11 @@ augroup end
 
 " theme
 set termguicolors
-"let g:mode = 'focus'
-"set cursorline
+let g:mode = 'mirtilo'
+set cursorline
 syntax enable
 colorscheme amora
-hi Normal guibg=NONE ctermbg=NONE
+"hi Normal guibg=NONE ctermbg=NONE
 hi LineNr guibg=NONE ctermbg=NONE
 
 set noshowmode
