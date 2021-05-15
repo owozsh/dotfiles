@@ -14,7 +14,6 @@ call plug#begin()
 	Plug 'ap/vim-css-color'
 	Plug 'uiiaoo/java-syntax.vim'
 	Plug 'dkarter/bullets.vim'
-	Plug 'embark-theme/vim', { 'as': 'embark' }
 	Plug 'm-pilia/vim-smarthome'
 call plug#end()
 
@@ -140,7 +139,7 @@ augroup end
 
 " theme
 set termguicolors
-let g:mode = 'mirtilo'
+"let g:mode = 'amora'
 set cursorline
 syntax enable
 colorscheme amora
