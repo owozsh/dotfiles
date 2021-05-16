@@ -25,6 +25,8 @@ alias org="nvim ~/Migrator/org/org.md"
 
 alias czsh="nvim ~/.zshrc"
 alias cnvim="nvim ~/.config/nvim/init.vim"
+alias ckitty="nvim ~/.config/kitty/kitty.conf"
+alias cdwm="nvim ~/Developer/dotfiles/dwm-6.1/config.h"
 
 alias ga="git add ."
 alias gc="git commit -a -m"

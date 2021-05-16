@@ -139,7 +139,7 @@ augroup end
 
 " theme
 set termguicolors
-"let g:mode = 'amora'
+"let g:mode = 'mirtilo'
 set cursorline
 syntax enable
 colorscheme amora
