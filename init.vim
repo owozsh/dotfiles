@@ -1,20 +1,25 @@
 call plug#begin()
+	Plug 'owozsh/amora'
+	Plug 'dracula/vim', { 'as': 'dracula' }
+	Plug 'altercation/vim-colors-solarized'
+
 	Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
-	Plug 'junegunn/goyo.vim'
-	Plug 'mattn/emmet-vim'
-	Plug 'sheerun/vim-polyglot'
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
-	Plug 'mcchrish/nnn.vim'
-	Plug 'arthurxavierx/vim-unicoder'
-	Plug 'dhruvasagar/vim-table-mode'
+	Plug 'm-pilia/vim-smarthome'
 	Plug 'voldikss/vim-floaterm'
 	Plug 'Raimondi/delimitMate'
-	Plug 'owozsh/amora'
-	Plug 'ap/vim-css-color'
-	Plug 'uiiaoo/java-syntax.vim'
+	Plug 'mcchrish/nnn.vim'
+
+	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+	Plug 'dhruvasagar/vim-table-mode'
+	Plug 'arthurxavierx/vim-unicoder'
 	Plug 'dkarter/bullets.vim'
-	Plug 'm-pilia/vim-smarthome'
+	Plug 'junegunn/goyo.vim'
+
+	Plug 'mattn/emmet-vim'
+	Plug 'ap/vim-css-color'
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'sheerun/vim-polyglot'
+	Plug 'uiiaoo/java-syntax.vim'
 call plug#end()
 
 " emmet
@@ -45,7 +50,7 @@ nnoremap <CR> o<Esc>
 nnoremap <Space> O<Esc>
 nnoremap <M-d> dd
 
-iabbrev #i# #include <stdio.h><CR><CR>int main() {
+ab #i# #include <stdio.h><CR><CR>int main()
 
 noremap <leader>1 1gt
 noremap <leader>2 2gt
@@ -91,10 +96,6 @@ set mouse=a
 set clipboard+=unnamedplus
 set autochdir
 
-set nrformats+=alpha
-set shiftwidth=2
-set expandtab
-
 " smart home/end
 nmap <silent><Home> :call smarthome#SmartHome('n')<cr>
 nmap <silent><End> :call smarthome#SmartEnd('n')<cr>
@@ -135,16 +136,8 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-"set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-" theme
-set termguicolors
-"let g:mode = 'mirtilo'
-set cursorline
-syntax enable
-colorscheme amora
-"hi Normal guibg=NONE ctermbg=NONE
-hi LineNr guibg=NONE ctermbg=NONE
+" Java Syntax
+highlight link javaIdentifier NONE
 
 set noshowmode
 set noruler
@@ -152,5 +145,5 @@ set laststatus=0
 set noshowcmd
 set cmdheight=1
 
-" Java Syntax
-highlight link javaIdentifier NONE
+" theme
+syntax enable
