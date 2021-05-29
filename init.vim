@@ -1,7 +1,5 @@
 call plug#begin()
 	Plug 'owozsh/amora'
-	Plug 'dracula/vim', { 'as': 'dracula' }
-	Plug 'altercation/vim-colors-solarized'
 
 	Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 	Plug 'm-pilia/vim-smarthome'
@@ -146,4 +144,7 @@ set noshowcmd
 set cmdheight=1
 
 " theme
+set termguicolors
 syntax enable
+colorscheme std
+set cursorline
