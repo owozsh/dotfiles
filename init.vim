@@ -1,5 +1,6 @@
 call plug#begin()
 	Plug 'owozsh/amora'
+	Plug 'owozsh/Coffee'
 
 	Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 	Plug 'm-pilia/vim-smarthome'
@@ -78,6 +79,8 @@ nnoremap <S-Tab> <<
 vmap <Tab> >gv
 vmap <S-Tab> <gv
 
+noremap <Leader>s :update<CR>
+
 nnoremap <leader>g :Goyo<CR>
 
 """" nvim settings
@@ -146,5 +149,7 @@ set cmdheight=1
 " theme
 set termguicolors
 syntax enable
-colorscheme std
+let g:mode='mirtilo'
+colo amora
+hi LineNr guibg=NONE ctermbg=NONE
 set cursorline
