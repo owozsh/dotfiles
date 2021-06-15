@@ -1,6 +1,5 @@
 call plug#begin()
 	Plug 'owozsh/amora'
-	Plug 'owozsh/Coffee'
 
 	Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 	Plug 'm-pilia/vim-smarthome'
@@ -147,9 +146,5 @@ set noshowcmd
 set cmdheight=1
 
 " theme
-set termguicolors
 syntax enable
-let g:mode='mirtilo'
-colo amora
-hi LineNr guibg=NONE ctermbg=NONE
-set cursorline
+set termguicolors
