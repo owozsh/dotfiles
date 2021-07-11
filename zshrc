@@ -30,6 +30,7 @@ alias gc="git commit -a -m"
 alias gP="git push"
 
 alias ai="sudo apt install"
+alias i="sudo dnf install"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
