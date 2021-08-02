@@ -18,7 +18,7 @@ export NNN_OPENER="/usr/local/bin/nvim"
 
 alias n="nnn -C -o -c"
 
-alias org="nvim ~/Migrator/org/org.md"
+alias org="nvim ~/Migrator/Planner/org.md"
 
 alias czsh="nvim ~/.zshrc"
 alias cnvim="nvim ~/.config/nvim/init.vim"

@@ -149,6 +149,5 @@ set cmdheight=1
 " theme
 syntax enable
 set termguicolors
-let g:mode="vscode_colors"
 colo amora
 set cursorline
