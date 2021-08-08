@@ -1,8 +1,6 @@
 call plug#begin()
 	Plug 'owozsh/amora'
 	Plug 'morhetz/gruvbox'
-	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
 
 	Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 	Plug 'm-pilia/vim-smarthome'
