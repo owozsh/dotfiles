@@ -40,3 +40,5 @@ export NVM_DIR="$HOME/.nvm"
 export LDFLAGS="-L/usr/local/opt/ruby/lib"
 export CPPFLAGS="-I/usr/local/opt/ruby/include"
 export PATH="/usr/local/opt/ruby/bin:$PATH"
+
+. /opt/asdf-vm/asdf.sh
