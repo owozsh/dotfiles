@@ -150,5 +150,6 @@ set cmdheight=1
 " theme
 syntax enable
 set termguicolors
-colo gruvbox
+let g:mode="kiwi"
+colo amora
 set cursorline
