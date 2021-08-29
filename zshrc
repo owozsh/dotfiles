@@ -1,10 +1,10 @@
 ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="lambda-gitster"
+ZSH_THEME="bira"
 
 ZSH_DISABLE_COMPFIX=true
 
-plugins=(git; zsh-autosuggestions; zsh-syntax-highlighting)
+plugins=(git; zsh-autosuggestions; zsh-syntax-highlighting; asdf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -40,5 +40,3 @@ alias gP="git push"
 export LDFLAGS="-L/usr/local/opt/ruby/lib"
 export CPPFLAGS="-I/usr/local/opt/ruby/include"
 export PATH="/usr/local/opt/ruby/bin:$PATH"
-
-. /usr/local/opt/asdf/libexec/asdf.sh

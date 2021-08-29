@@ -1,6 +1,9 @@
 call plug#begin()
 	Plug 'owozsh/amora'
 	Plug 'morhetz/gruvbox'
+	Plug 'altercation/vim-colors-solarized'
+	Plug 'arcticicestudio/nord-vim'
+	Plug 'chriskempson/base16-vim'
 
 	Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 	Plug 'm-pilia/vim-smarthome'
@@ -149,7 +152,5 @@ set cmdheight=1
 
 " theme
 syntax enable
-set termguicolors
-let g:mode="kiwi"
-colo amora
+colo solarized
 set cursorline
