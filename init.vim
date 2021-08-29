@@ -5,6 +5,8 @@ call plug#begin()
 	Plug 'arcticicestudio/nord-vim'
 	Plug 'chriskempson/base16-vim'
 
+	Plug 'lervag/vimtex'
+
 	Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 	Plug 'm-pilia/vim-smarthome'
 	Plug 'voldikss/vim-floaterm'
@@ -114,7 +116,7 @@ let g:nnn#command = 'nnn -C -o'
 let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debug' } }
 
 " autocomplete
-let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-python', 'coc-clangd', 'coc-java']
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-python', 'coc-clangd', 'coc-java', 'coc-vimtex']
 
 inoremap <silent><expr> <TAB>
 			\ pumvisible() ? "\<C-n>" :
