@@ -7,6 +7,7 @@ call plug#begin()
 
 	Plug 'lervag/vimtex'
 
+	Plug 'tpope/vim-commentary'
 	Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 	Plug 'm-pilia/vim-smarthome'
 	Plug 'voldikss/vim-floaterm'
@@ -19,6 +20,7 @@ call plug#begin()
 	Plug 'dkarter/bullets.vim'
 	Plug 'junegunn/goyo.vim'
 
+	Plug 'evanleck/vim-svelte'
 	Plug 'mattn/emmet-vim'
 	Plug 'ap/vim-css-color'
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -116,7 +118,7 @@ let g:nnn#command = 'nnn -C -o'
 let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debug' } }
 
 " autocomplete
-let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-python', 'coc-clangd', 'coc-java', 'coc-vimtex']
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-python', 'coc-clangd', 'coc-java', 'coc-vimtex', 'coc-svelte']
 
 inoremap <silent><expr> <TAB>
 			\ pumvisible() ? "\<C-n>" :
