@@ -42,7 +42,7 @@ autocmd filetype java nnoremap <F5> :w <bar> exec '!javac %' <CR> :tabnew % <bar
 autocmd filetype c nnoremap <F5> :w <bar> tabnew % <bar> term gcc % -o %< && ./%< <CR>
 autocmd filetype cpp nnoremap <F5> :w <bar> tabnew % <bar> term g++ % -o %< && ./%< <CR>
 autocmd filetype python nnoremap <F5> :w <bar> tabnew % <bar> term python3 % <CR>
-autocmd filetype tex nnoremap <F5> :w <bar> exec '!pdflatex %'<CR><CR>
+autocmd filetype tex nnoremap <F5> :w <bar> exec '!xelatex -synctex=1 -interaction=nonstopmode %'<CR><CR>
 autocmd filetype tex nnoremap <F6> :w <bar> exec '!evince %<.pdf &'<CR><CR>
 
 nnoremap <F2> :NnnPicker %:p:h<CR>
@@ -158,3 +158,8 @@ set cmdheight=1
 syntax enable
 colo solarized
 set cursorline
+
+" LaTeX
+let g:Tex_CompileRule_dvi	= 'latex -interaction=nonstopmode $*'
+let g:Tex_CompileRule_ps	= 'ps2pdf $*'
+let g:Tex_CompileRule_pdf	= 'xelatex -interaction=nonstopmode $*'
