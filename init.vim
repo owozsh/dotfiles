@@ -7,6 +7,8 @@ call plug#begin()
 
 	Plug 'lervag/vimtex'
 
+	Plug 'sk1418/HowMuch'
+
 	Plug 'tpope/vim-commentary'
 	Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 	Plug 'm-pilia/vim-smarthome'
