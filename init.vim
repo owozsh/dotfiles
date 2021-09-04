@@ -16,6 +16,7 @@ call plug#begin()
 	Plug 'Raimondi/delimitMate'
 	Plug 'mcchrish/nnn.vim'
 
+	Plug 'tpope/vim-fugitive'
 	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 	Plug 'dhruvasagar/vim-table-mode'
 	Plug 'arthurxavierx/vim-unicoder'
