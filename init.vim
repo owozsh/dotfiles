@@ -1,9 +1,5 @@
 call plug#begin()
-	Plug 'owozsh/amora'
-	Plug 'morhetz/gruvbox'
 	Plug 'altercation/vim-colors-solarized'
-	Plug 'arcticicestudio/nord-vim'
-	Plug 'chriskempson/base16-vim'
 
 	Plug 'lervag/vimtex'
 

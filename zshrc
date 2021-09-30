@@ -40,3 +40,7 @@ alias gP="git push"
 # ASDF
 
 . /usr/local/opt/asdf/libexec/asdf.sh
+
+# SQL-MAC
+
+export PATH=${PATH}:/usr/local/mysql/bin
