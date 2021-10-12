@@ -1,5 +1,6 @@
 call plug#begin()
 	Plug 'altercation/vim-colors-solarized'
+	Plug 'morhetz/gruvbox'
 
 	Plug 'lervag/vimtex'
 
@@ -155,6 +156,7 @@ set cmdheight=1
 
 " theme
 syntax enable
+set background=light
 colo solarized
 set cursorline
 
