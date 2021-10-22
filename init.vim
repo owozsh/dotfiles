@@ -1,6 +1,5 @@
 call plug#begin()
 	Plug 'altercation/vim-colors-solarized'
-	Plug 'morhetz/gruvbox'
 
 	Plug 'lervag/vimtex'
 

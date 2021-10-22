@@ -22,7 +22,7 @@ alias n="nnn -C -o -c"
 
 # ORG
 
-alias org="nvim ~/Migrator/org/org.md"
+alias org="nvim ~/Migrator/org/"
 alias wis="nvim ~/Migrator/org/wis.md"
 
 # CONFIG
