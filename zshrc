@@ -31,6 +31,10 @@ alias czsh="nvim ~/.zshrc"
 alias cnvim="nvim ~/.config/nvim/init.vim"
 alias ckitty="nvim ~/.config/kitty/kitty.conf"
 
+# SHORTCUTS
+
+alias cdd="cd Developer; clear"
+
 # GIT
 
 alias ga="git add -A"
