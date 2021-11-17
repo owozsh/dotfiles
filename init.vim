@@ -1,6 +1,7 @@
 call plug#begin()
 	Plug 'altercation/vim-colors-solarized'
-	Plug 'chriskempson/base16-vim'
+	Plug 'macguirerintoul/night_owl_light.vim'
+	Plug 'morhetz/gruvbox'
 
 	Plug 'lervag/vimtex'
 
@@ -156,7 +157,8 @@ set cmdheight=1
 
 " theme
 syntax enable
-colo solarized
+set termguicolors
+colo gruvbox
 set cursorline
 
 " LaTeX

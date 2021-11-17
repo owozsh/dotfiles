@@ -41,10 +41,8 @@ alias ga="git add -A"
 alias gc="git commit -a"
 alias gP="git push"
 
-# ASDF
+# NVM
 
-. /usr/local/opt/asdf/libexec/asdf.sh
-
-# SQL-MAC
-
-export PATH=${PATH}:/usr/local/mysql/bin
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
