@@ -1,5 +1,9 @@
 call plug#begin()
+
 	Plug 'altercation/vim-colors-solarized'
+	Plug 'morhetz/gruvbox'
+	Plug 'dracula/vim'
+	Plug 'EdenEast/nightfox.nvim'
 
 	Plug 'lervag/vimtex'
 
@@ -155,6 +159,7 @@ set cmdheight=1
 
 " theme
 syntax enable
+"set termguicolors
 colo solarized
 set cursorline
 
