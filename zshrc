@@ -91,4 +91,3 @@ export FZF_ALT_C_COMMAND="fd -t d --hidden --follow --search-path $HOME/Develope
 bindkey -s '^f' '^ucd $(ls -p | grep / | cat | fzf)\nclear\n'
 bindkey -s '^e' '^unvim $(ls -p | grep -v / | cat | fzf)\n'
 
-
