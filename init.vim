@@ -15,6 +15,8 @@ call plug#begin()
 	Plug 'voldikss/vim-floaterm'
 	Plug 'Raimondi/delimitMate'
 	Plug 'mcchrish/nnn.vim'
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	Plug 'junegunn/fzf.vim'
 
 	Plug 'tpope/vim-fugitive'
 	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }

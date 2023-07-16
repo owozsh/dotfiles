@@ -2,7 +2,7 @@
 
 # Run the script after installing oh-my-zsh
 
-mkdir ~/.config/nvim
+mkdir -p ~/.config/nvim
 
 ln -sf ~/Developer/dotfiles/zshrc ~/.zshrc
 ln -sf ~/Developer/dotfiles/init.vim ~/.config/nvim/init.vim
