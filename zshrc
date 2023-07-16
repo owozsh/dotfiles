@@ -34,6 +34,7 @@ alias org="nvim ~/today.md"
 # CONFIG
 
 alias czsh="nvim ~/.zshrc"
+alias szsh="source ~/.zshrc"
 alias cnvim="nvim ~/.config/nvim/init.vim"
 alias ckitty="nvim ~/.config/kitty/kitty.conf"
 
@@ -82,7 +83,7 @@ eval "$(rbenv init - zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export FZF_DEFAULT_COMMAND="fd . $HOME"
+export FZF_DEFAULT_COMMAND="fd . ."
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd -t d --hidden --follow --search-path $HOME/Developer"
 
