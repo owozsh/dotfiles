@@ -169,3 +169,5 @@ set cursorline
 let g:Tex_CompileRule_dvi	= 'latex -interaction=nonstopmode $*'
 let g:Tex_CompileRule_ps	= 'ps2pdf $*'
 let g:Tex_CompileRule_pdf	= 'xelatex -interaction=nonstopmode $*'
+
+nmap <C-p> :Files<cr>
