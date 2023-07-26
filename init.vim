@@ -4,6 +4,7 @@ call plug#begin()
 	Plug 'morhetz/gruvbox'
 	Plug 'dracula/vim'
 	Plug 'EdenEast/nightfox.nvim'
+	Plug 'Luxed/ayu-vim'
 
 	Plug 'lervag/vimtex'
 
@@ -162,6 +163,7 @@ set cmdheight=1
 " theme
 syntax enable
 "set termguicolors
+let g:ayucolor="dark"
 colo solarized
 set cursorline
 
