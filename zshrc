@@ -7,7 +7,7 @@ fi
 
 ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="bira"
+ZSH_THEME="robbyrussell"
 
 ZSH_DISABLE_COMPFIX=true
 
@@ -91,3 +91,4 @@ export FZF_ALT_C_COMMAND="fd -t d --hidden --follow --search-path $HOME/Develope
 bindkey -s '^f' '^ucd $(ls -p | grep / | cat | fzf)\nclear\n'
 bindkey -s '^e' '^unvim $(ls -p | grep -v / | cat | fzf)\n'
 
+alias cc='cd ../'

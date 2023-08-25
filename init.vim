@@ -1,10 +1,10 @@
 call plug#begin()
-
 	Plug 'altercation/vim-colors-solarized'
 	Plug 'morhetz/gruvbox'
 	Plug 'dracula/vim'
 	Plug 'EdenEast/nightfox.nvim'
 	Plug 'Luxed/ayu-vim'
+	Plug 'owozsh/amora'
 
 	Plug 'lervag/vimtex'
 
@@ -109,7 +109,7 @@ set number
 set relativenumber
 set mouse=a
 set clipboard+=unnamedplus
-set autochdir
+"set autochdir
 
 " smart home/end
 nmap <silent><Home> :call smarthome#SmartHome('n')<cr>
@@ -162,10 +162,12 @@ set cmdheight=1
 
 " theme
 syntax enable
-"set termguicolors
+set termguicolors
 let g:ayucolor="dark"
-colo solarized
-set cursorline
+colo ayu
+hi Normal guibg=NONE ctermbg=NONE
+hi EndOfBuffer guibg=NONE ctermbg=NONE
+hi LineNr guibg=NONE
 
 " LaTeX
 let g:Tex_CompileRule_dvi	= 'latex -interaction=nonstopmode $*'
