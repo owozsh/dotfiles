@@ -4,6 +4,7 @@ call plug#begin()
 	Plug 'morhetz/gruvbox'
 	Plug 'dracula/vim'
 	Plug 'EdenEast/nightfox.nvim'
+	Plug 'owozsh/amora'
 
 	Plug 'lervag/vimtex'
 
@@ -108,7 +109,7 @@ set number
 set relativenumber
 set mouse=a
 set clipboard+=unnamedplus
-set autochdir
+"set autochdir
 
 " smart home/end
 nmap <silent><Home> :call smarthome#SmartHome('n')<cr>
