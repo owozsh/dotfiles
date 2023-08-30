@@ -1,9 +1,9 @@
 call plug#begin()
-
 	Plug 'altercation/vim-colors-solarized'
 	Plug 'morhetz/gruvbox'
 	Plug 'dracula/vim'
 	Plug 'EdenEast/nightfox.nvim'
+	Plug 'Luxed/ayu-vim'
 	Plug 'owozsh/amora'
 
 	Plug 'lervag/vimtex'
@@ -162,9 +162,12 @@ set cmdheight=1
 
 " theme
 syntax enable
-"set termguicolors
-colo solarized
-set cursorline
+set termguicolors
+let g:ayucolor="dark"
+colo ayu
+hi Normal guibg=NONE ctermbg=NONE
+hi EndOfBuffer guibg=NONE ctermbg=NONE
+hi LineNr guibg=NONE
 
 " LaTeX
 let g:Tex_CompileRule_dvi	= 'latex -interaction=nonstopmode $*'
