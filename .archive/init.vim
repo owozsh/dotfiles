@@ -5,6 +5,7 @@ call plug#begin()
 	Plug 'EdenEast/nightfox.nvim'
 	Plug 'Luxed/ayu-vim'
 	Plug 'owozsh/amora'
+	Plug 'ghifarit53/tokyonight-vim'
 
 	Plug 'lervag/vimtex'
 
@@ -48,7 +49,7 @@ autocmd filetype java nnoremap <F5> :w <bar> exec '!javac %' <CR> :tabnew % <bar
 autocmd filetype c nnoremap <F5> :w <bar> tabnew % <bar> term gcc % -o %< && ./%< <CR>
 autocmd filetype cpp nnoremap <F5> :w <bar> tabnew % <bar> term g++ % -o %< && ./%< <CR>
 autocmd filetype python nnoremap <F5> :w <bar> tabnew % <bar> term python3 % <CR>
-autocmd filetype tex nnoremap <F5> :w <bar> exec '!xelatex -synctex=1 -interaction=nonstopmode %'<CR><CR>
+autocmd filetype tex nnoremap <F5> :w <bar> exec '!pdflatex %'<CR><CR>
 autocmd filetype tex nnoremap <F6> :w <bar> exec '!evince %<.pdf &'<CR><CR>
 
 nnoremap <F2> :NnnPicker %:p:h<CR>
@@ -164,7 +165,8 @@ set cmdheight=1
 syntax enable
 set termguicolors
 let g:ayucolor="dark"
-colo ayu
+let g:tokyonight_style = 'night'
+colo tokyonight
 hi Normal guibg=NONE ctermbg=NONE
 hi EndOfBuffer guibg=NONE ctermbg=NONE
 hi LineNr guibg=NONE
