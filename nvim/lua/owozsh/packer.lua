@@ -11,6 +11,7 @@ return require('packer').startup(function(use)
 		'nvim-telescope/telescope.nvim', tag = '0.1.2',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
+    use 'mbbill/undotree'
 	use {
 		'VonHeikemen/lsp-zero.nvim',
 		branch = 'v2.x',
