@@ -46,6 +46,10 @@ return require('packer').startup(function(use)
     -- themes
     use "ellisonleao/gruvbox.nvim"
     use 'Mofiqul/dracula.nvim'
+    use "rebelot/kanagawa.nvim"
+    use { "catppuccin/nvim", as = "catppuccin" }
+    use "EdenEast/nightfox.nvim"
+    --
     use "rafamadriz/friendly-snippets"
     use 'saadparwaiz1/cmp_luasnip'
     use {
