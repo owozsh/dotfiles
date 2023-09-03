@@ -49,6 +49,7 @@ return require('packer').startup(function(use)
     use "rebelot/kanagawa.nvim"
     use { "catppuccin/nvim", as = "catppuccin" }
     use "EdenEast/nightfox.nvim"
+    use "savq/melange-nvim"
     --
     use "rafamadriz/friendly-snippets"
     use 'saadparwaiz1/cmp_luasnip'
