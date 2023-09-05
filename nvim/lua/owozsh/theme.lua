@@ -1,5 +1,5 @@
 function SetColor(color)
-	color = color or "kanagawa"
+	color = color or "dracula"
 
 	vim.o.background = "dark"
 	vim.cmd.colorscheme(color)
