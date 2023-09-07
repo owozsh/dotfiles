@@ -99,6 +99,11 @@ _G.packer_plugins = {
     path = "/Users/owozsh/.local/share/nvim/site/pack/packer/start/dracula.nvim",
     url = "https://github.com/Mofiqul/dracula.nvim"
   },
+  everforest = {
+    loaded = true,
+    path = "/Users/owozsh/.local/share/nvim/site/pack/packer/start/everforest",
+    url = "https://github.com/sainnhe/everforest"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/Users/owozsh/.local/share/nvim/site/pack/packer/start/friendly-snippets",

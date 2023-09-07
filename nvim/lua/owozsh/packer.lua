@@ -61,4 +61,5 @@ return require('packer').startup(function(use)
     use 'norcalli/nvim-colorizer.lua'
     use 'lewis6991/gitsigns.nvim'
     use 'tpope/vim-fugitive'
+    use 'sainnhe/everforest'
 end)
