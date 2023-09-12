@@ -92,3 +92,5 @@ bindkey -s '^f' '^ucd $(ls -p | grep / | cat | fzf)\nclear\n'
 bindkey -s '^e' '^unvim $(ls -p | grep -v / | cat | fzf)\n'
 
 alias cc='cd ../'
+
+alias pyvsct='python3 ~/Developer/pyvsct/main.py'

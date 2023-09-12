@@ -4,6 +4,7 @@ lsp.on_attach(function(client, bufnr)
     -- see :help lsp-zero-keybindings
     -- to learn the available actions
     lsp.default_keymaps({ buffer = bufnr })
+    lsp.buffer_autoformat()
 end)
 
 -- (Optional) Configure lua language server for neovim
@@ -41,8 +42,8 @@ require('luasnip.loaders.from_vscode').lazy_load()
 
 cmp.setup({
     sources = {
-        {name = 'nvim_lsp'},
-        {name = 'luasnip'},
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' },
     },
     mapping = {
         ['<CR>'] = cmp.mapping.confirm({ select = false }),
