@@ -44,7 +44,7 @@ alias dcu="docker compose up"
 
 # SHORTCUTS
 
-alias cdd="cd Developer; clear"
+alias cdd="cd ~/Developer; clear"
 alias cuni="cd Files/uni 🎓; clear"
 
 # GIT
