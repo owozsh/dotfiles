@@ -47,13 +47,17 @@ cmp.setup({
     },
     mapping = {
         ['<CR>'] = cmp.mapping.confirm({ select = false }),
-        ['<Tab>'] = cmp_action.luasnip_supertab(),
-        ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
+        ['<Tab>'] = cmp_action.tab_complete(),
+        ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
     },
     preselect = 'item',
     completion = {
         completeopt = 'menu,menuone,noinsert'
     },
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+    }
 })
 
 require('nvim-ts-autotag').setup()

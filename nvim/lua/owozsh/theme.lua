@@ -1,5 +1,5 @@
 function SetColor(color)
-    color = color or "gruvbox"
+    color = color or "kanagawa"
 
     vim.o.background = "dark"
 
