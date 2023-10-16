@@ -53,6 +53,7 @@ return require('packer').startup(function(use)
     use 'Mofiqul/dracula.nvim'
     use 'folke/tokyonight.nvim'
     use 'navarasu/onedark.nvim'
+    use "rebelot/kanagawa.nvim"
 
     use "rafamadriz/friendly-snippets"
     use 'saadparwaiz1/cmp_luasnip'
