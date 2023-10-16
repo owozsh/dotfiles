@@ -42,16 +42,18 @@ return require('packer').startup(function(use)
             { 'L3MON4D3/LuaSnip' }, -- Required
         }
     }
-    use "sbdchd/neoformat"
+    use {
+        'stevearc/conform.nvim',
+        config = function() require('conform').setup() end
+    }
 
     -- themes
     use "ellisonleao/gruvbox.nvim"
+    use 'overcache/NeoSolarized'
     use 'Mofiqul/dracula.nvim'
-    use "rebelot/kanagawa.nvim"
-    use { "catppuccin/nvim", as = "catppuccin" }
-    use "EdenEast/nightfox.nvim"
-    use "savq/melange-nvim"
-    --
+    use 'folke/tokyonight.nvim'
+    use 'navarasu/onedark.nvim'
+
     use "rafamadriz/friendly-snippets"
     use 'saadparwaiz1/cmp_luasnip'
     use {
@@ -62,6 +64,8 @@ return require('packer').startup(function(use)
     use 'norcalli/nvim-colorizer.lua'
     use 'lewis6991/gitsigns.nvim'
     use 'tpope/vim-fugitive'
+    use "tpope/vim-surround"
+    use 'tpope/vim-commentary'
     use 'sainnhe/everforest'
     use 'f-person/auto-dark-mode.nvim'
 end)

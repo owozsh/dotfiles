@@ -4,7 +4,6 @@ lsp.on_attach(function(client, bufnr)
     -- see :help lsp-zero-keybindings
     -- to learn the available actions
     lsp.default_keymaps({ buffer = bufnr })
-    lsp.buffer_autoformat()
 end)
 
 -- (Optional) Configure lua language server for neovim
@@ -61,3 +60,18 @@ cmp.setup({
 })
 
 require('nvim-ts-autotag').setup()
+
+require("conform").setup({
+    formatters_by_ft = {
+        lua = { "stylua" },
+        javascript = { { "prettierd", "prettier" } },
+        typescript = { { "prettierd", "prettier" } },
+        javascriptreact = { { "prettierd", "prettier" } },
+        typescriptreact = { { "prettierd", "prettier" } },
+    },
+    format_on_save = {
+        -- These options will be passed to conform.format()
+        timeout_ms = 500,
+        lsp_fallback = true,
+    },
+})
