@@ -15,7 +15,6 @@ vim.keymap.set("n", "<leader>Y", "\"+yg_")
 vim.keymap.set("n", "<leader>yy", "\"+yy")
 
 -- Insert Blank Lines
-vim.keymap.set("n", "<CR>", "o<ESC>")
 vim.keymap.set("n", "<Space>", "O<ESC>")
 
 -- Fast Delete Line
