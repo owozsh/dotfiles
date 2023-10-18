@@ -68,6 +68,7 @@ require("conform").setup({
         typescript = { { "prettierd", "prettier" } },
         javascriptreact = { { "prettierd", "prettier" } },
         typescriptreact = { { "prettierd", "prettier" } },
+        tex = { "latexindent" },
     },
     format_on_save = {
         -- These options will be passed to conform.format()
