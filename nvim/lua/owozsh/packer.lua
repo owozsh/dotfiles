@@ -54,6 +54,7 @@ return require('packer').startup(function(use)
     use 'folke/tokyonight.nvim'
     use 'navarasu/onedark.nvim'
     use "rebelot/kanagawa.nvim"
+    use { "catppuccin/nvim", as = "catppuccin" }
     use 'owozsh/amora'
 
     use "rafamadriz/friendly-snippets"

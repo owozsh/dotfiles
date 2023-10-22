@@ -10,6 +10,6 @@ vim.keymap.set('n', '<leader>gb', builtin.git_branches, {})
 vim.keymap.set('n', '<leader>gs', builtin.grep_string, {})
 
 vim.keymap.set('n', '<leader>gt', builtin.lsp_implementations, {})
-vim.keymap.set('n', '<leader>gu', builtin.lsp_references, {})
+vim.keymap.set('n', 'gr', builtin.lsp_references, {})
 vim.keymap.set('n', '<leader>ws', builtin.lsp_workspace_symbols, {})
 vim.keymap.set('n', '<leader>ds', builtin.lsp_document_symbols, {})
