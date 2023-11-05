@@ -45,7 +45,6 @@ alias dcu="docker compose up"
 # SHORTCUTS
 
 alias cdd="cd ~/Developer; clear"
-alias cuni="cd Files/uni 🎓; clear"
 
 # GIT
 
@@ -89,6 +88,7 @@ export FZF_ALT_C_COMMAND="fd -t d --hidden --follow --search-path $HOME/Develope
 
 # bindkey -s '^f' '^ucd ./**\t\nclear\n'
 bindkey -s '^f' '^ucd $(ls -p | grep / | cat | fzf)\nclear\n'
+bindkey -s '^n' '^ucd ~/Home/Notes\nclear\n'
 bindkey -s '^e' '^unvim $(ls -p | grep -v / | cat | fzf)\n'
 
 alias cc='cd ../'

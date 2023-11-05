@@ -49,14 +49,16 @@ return require('packer').startup(function(use)
 
     -- themes
     use "ellisonleao/gruvbox.nvim"
-    use 'overcache/NeoSolarized'
     use 'Mofiqul/dracula.nvim'
     use 'folke/tokyonight.nvim'
     use 'navarasu/onedark.nvim'
     use "rebelot/kanagawa.nvim"
     use { "catppuccin/nvim", as = "catppuccin" }
     use 'owozsh/amora'
+    use 'maxmx03/solarized.nvim'
 
+
+    use 'dhruvasagar/vim-table-mode'
     use "rafamadriz/friendly-snippets"
     use 'saadparwaiz1/cmp_luasnip'
     use {
@@ -71,4 +73,13 @@ return require('packer').startup(function(use)
     use 'tpope/vim-commentary'
     use 'sainnhe/everforest'
     use 'f-person/auto-dark-mode.nvim'
+    use {
+        "Pocco81/true-zen.nvim",
+        config = function()
+            require("true-zen").setup {
+                -- your config goes here
+                -- or just leave it empty :)
+            }
+        end,
+    }
 end)

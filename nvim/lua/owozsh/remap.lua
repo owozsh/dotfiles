@@ -38,6 +38,3 @@ vim.keymap.set("n", "<Tab>", ">>")
 vim.keymap.set("n", "<S-Tab>", "<<")
 vim.keymap.set("v", "<Tab>", ">gv")
 vim.keymap.set("v", "<S-Tab>", "<gv")
-
--- Reloading Config
-vim.keymap.set("n", "<leader>rr", ":luafile ~/.config/nvim/init.lua<CR>")

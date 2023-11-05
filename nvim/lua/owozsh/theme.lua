@@ -14,9 +14,29 @@ function SetColor(color)
         transparent_mode = true,
     })
 
+    require('kanagawa').setup({
+        commentStyle = { italic = true },
+        keywordStyle = { italic = true },
+        statementStyle = { bold = false },
+        transparent = true,
+        background = {
+            dark = "dragon",
+            light = "lotus"
+        },
+        colors = {
+            theme = {
+                all = {
+                    ui = {
+                        bg_gutter = "none"
+                    }
+                }
+            }
+        },
+    })
+
     vim.cmd.colorscheme(color)
 
-    vim.opt.cursorline = true
+    -- vim.opt.cursorline = true
 
     -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
     -- vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
