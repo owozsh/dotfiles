@@ -1,7 +1,8 @@
 vim.g.mapleader = "\\"
 
 -- File Explorer
-vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
+-- vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
+--
 vim.keymap.set("n", "<leader>s", ":update <CR>")
 vim.keymap.set("n", "<leader><C-s>", ":so <CR>")
 vim.keymap.set("n", "<leader>y", ":so <CR>")
