@@ -94,3 +94,10 @@ bindkey -s '^e' '^unvim $(ls -p | grep -v / | cat | fzf)\n'
 alias cc='cd ../'
 
 alias pyvsct='python3 ~/Developer/pyvsct/main.py'
+export PATH="/usr/local/opt/postgresql/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/owozsh/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/owozsh/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/owozsh/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/owozsh/Downloads/google-cloud-sdk/completion.zsh.inc'; fi

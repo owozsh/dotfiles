@@ -25,13 +25,16 @@ vim.keymap.set("n", "<M-j>", ":m .+1<CR>==")
 vim.keymap.set("i", "<M-j>", "<Esc>:m .+1<CR>==")
 vim.keymap.set("v", "<M-j>", ":m '>+1<CR>gv=gv")
 
--- Alt-Shift Line Duplicate
 vim.keymap.set("n", "<M-k>", ":m .-2<CR>==")
 vim.keymap.set("i", "<M-k>", "<Esc>:m .-2<CR>==")
 vim.keymap.set("v", "<M-k>", ":m '<-2<CR>gv=gv")
 
+-- Alt-Shift Line Duplicate
 vim.keymap.set("n", "<S-M-j>", "yyp")
 vim.keymap.set("n", "<S-M-k>", "yyP")
+
+vim.keymap.set("v", "<S-M-j>", "yp")
+vim.keymap.set("v", "<S-M-k>", "yP")
 
 -- Fast Indenting
 vim.keymap.set("n", "<Tab>", ">>")

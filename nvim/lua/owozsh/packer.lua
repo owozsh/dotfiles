@@ -9,8 +9,15 @@ return require('packer').startup(function(use)
     }
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.2',
-        requires = { { 'nvim-lua/plenary.nvim' } }
+        requires = { { 'nvim-lua/plenary.nvim' },
+            { "nvim-telescope/telescope-live-grep-args.nvim" },
+        },
+        config = function()
+            require("telescope").load_extension("live_grep_args")
+        end
     }
+    use 'nvim-tree/nvim-tree.lua'
+    use 'nvim-tree/nvim-web-devicons'
     use 'mbbill/undotree'
     use {
         'VonHeikemen/lsp-zero.nvim',
@@ -46,7 +53,6 @@ return require('packer').startup(function(use)
         'stevearc/conform.nvim',
         config = function() require('conform').setup() end
     }
-
     -- themes
     use "ellisonleao/gruvbox.nvim"
     use 'Mofiqul/dracula.nvim'
