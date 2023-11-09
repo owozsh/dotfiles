@@ -18,6 +18,10 @@ return require('packer').startup(function(use)
     }
     use 'nvim-tree/nvim-tree.lua'
     use 'nvim-tree/nvim-web-devicons'
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
     use 'mbbill/undotree'
     use {
         'VonHeikemen/lsp-zero.nvim',
@@ -53,6 +57,8 @@ return require('packer').startup(function(use)
         'stevearc/conform.nvim',
         config = function() require('conform').setup() end
     }
+    -- These optional plugins should be loaded directly because of a bug in Packer lazy loading
+    use 'romgrk/barbar.nvim'
     -- themes
     use "ellisonleao/gruvbox.nvim"
     use 'Mofiqul/dracula.nvim'

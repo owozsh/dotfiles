@@ -7,7 +7,7 @@ fi
 
 ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="robbyrussell"
+ZSH_THEME="lambda"
 
 ZSH_DISABLE_COMPFIX=true
 
