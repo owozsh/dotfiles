@@ -1,4 +1,5 @@
 local builtin = require('telescope.builtin')
+local easypick = require("easypick")
 
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>o', builtin.oldfiles, {})

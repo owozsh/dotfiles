@@ -24,3 +24,4 @@ map('n', '<A-L>', '<Cmd>BufferMoveNext<CR>', opts)
 
 map('n', '<A-p>', '<Cmd>BufferPin<CR>', opts)
 map('n', '<A-c>', '<Cmd>BufferClose<CR>', opts)
+map('n', '<leader>c', '<Cmd>BufferClose<CR>', opts)

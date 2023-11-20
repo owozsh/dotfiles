@@ -11,7 +11,7 @@ ZSH_THEME="lambda"
 
 ZSH_DISABLE_COMPFIX=true
 
-plugins=(git; zsh-syntax-highlighting; asdf)
+plugins=(git; forgit; zsh-syntax-highlighting; asdf)
 
 source $ZSH/oh-my-zsh.sh
 

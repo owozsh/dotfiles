@@ -1,7 +1,6 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-    -- essentials
     use 'wbthomason/packer.nvim'
     use {
         'nvim-treesitter/nvim-treesitter',
@@ -16,6 +15,7 @@ return require('packer').startup(function(use)
             require("telescope").load_extension("live_grep_args")
         end
     }
+    use { 'axkirillov/easypick.nvim', requires = 'nvim-telescope/telescope.nvim' }
     use 'nvim-tree/nvim-tree.lua'
     use 'nvim-tree/nvim-web-devicons'
     use {
@@ -57,18 +57,12 @@ return require('packer').startup(function(use)
         'stevearc/conform.nvim',
         config = function() require('conform').setup() end
     }
-    -- These optional plugins should be loaded directly because of a bug in Packer lazy loading
     use 'romgrk/barbar.nvim'
-    -- themes
-    use "ellisonleao/gruvbox.nvim"
-    use 'Mofiqul/dracula.nvim'
     use 'folke/tokyonight.nvim'
-    use 'navarasu/onedark.nvim'
     use "rebelot/kanagawa.nvim"
     use { "catppuccin/nvim", as = "catppuccin" }
-    use 'owozsh/amora'
-    use 'maxmx03/solarized.nvim'
-
+    use 'ishan9299/nvim-solarized-lua'
+    use "EdenEast/nightfox.nvim"
 
     use 'dhruvasagar/vim-table-mode'
     use "rafamadriz/friendly-snippets"
@@ -77,6 +71,7 @@ return require('packer').startup(function(use)
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {} end
     }
+    use "lukas-reineke/indent-blankline.nvim"
     use 'windwp/nvim-ts-autotag'
     use 'norcalli/nvim-colorizer.lua'
     use 'lewis6991/gitsigns.nvim'
@@ -94,4 +89,5 @@ return require('packer').startup(function(use)
             }
         end,
     }
+    use 'nvim-treesitter/nvim-treesitter-context'
 end)
