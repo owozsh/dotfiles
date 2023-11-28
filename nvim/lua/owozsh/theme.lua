@@ -1,7 +1,7 @@
 function SetColor(color)
-    color = color or 'solarized'
+    color = color or 'catppuccin-macchiato'
 
-    vim.o.background = "light"
+    vim.o.background = "dark"
 
     vim.opt.cursorline = true
     vim.g.solarized_diffmode = 'high'

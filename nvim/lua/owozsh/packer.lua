@@ -18,6 +18,7 @@ return require('packer').startup(function(use)
     use { 'axkirillov/easypick.nvim', requires = 'nvim-telescope/telescope.nvim' }
     use 'nvim-tree/nvim-tree.lua'
     use 'nvim-tree/nvim-web-devicons'
+    use { 'mg979/vim-visual-multi', branch = 'master' }
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
@@ -63,6 +64,7 @@ return require('packer').startup(function(use)
     use { "catppuccin/nvim", as = "catppuccin" }
     use 'ishan9299/nvim-solarized-lua'
     use "EdenEast/nightfox.nvim"
+    use 'navarasu/onedark.nvim'
 
     use 'dhruvasagar/vim-table-mode'
     use "rafamadriz/friendly-snippets"
@@ -79,6 +81,7 @@ return require('packer').startup(function(use)
     use "tpope/vim-surround"
     use 'tpope/vim-commentary'
     use 'sainnhe/everforest'
+    use 'sainnhe/gruvbox-material'
     use 'f-person/auto-dark-mode.nvim'
     use {
         "Pocco81/true-zen.nvim",
