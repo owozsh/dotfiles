@@ -9,7 +9,7 @@ vim.keymap.set('n', '<leader>lg', ":lua require('telescope').extensions.live_gre
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>gb', builtin.git_branches, {})
 
-vim.keymap.set('n', '<leader>gs', builtin.grep_string, {})
+vim.keymap.set('n', '<leader>gs', builtin.git_status, {})
 
 vim.keymap.set('n', 'gi', builtin.lsp_implementations, {})
 vim.keymap.set('n', 'gd', builtin.lsp_definitions, {})
@@ -43,17 +43,12 @@ telescope.setup {
     extensions = {
         live_grep_args = {
             auto_quoting = true, -- enable/disable auto-quoting
-            -- define mappings, e.g.
             mappings = { -- extend mappings
                 i = {
                     ["<C-k>"] = lga_actions.quote_prompt(),
                     ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
                 },
             },
-            -- ... also accepts theme settings, for example:
-            -- theme = "dropdown", -- use dropdown theme
-            -- theme = { }, -- use own theme spec
-            -- layout_config = { mirror=true }, -- mirror preview pane
         }
     }
 }

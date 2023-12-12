@@ -61,10 +61,31 @@ return require('packer').startup(function(use)
     use 'romgrk/barbar.nvim'
     use 'folke/tokyonight.nvim'
     use "rebelot/kanagawa.nvim"
+    use 'sam4llis/nvim-tundra'
+    use 'Mofiqul/dracula.nvim'
     use { "catppuccin/nvim", as = "catppuccin" }
     use 'ishan9299/nvim-solarized-lua'
     use "EdenEast/nightfox.nvim"
     use 'navarasu/onedark.nvim'
+    use 'Shatur/neovim-ayu'
+    use 'loctvl842/monokai-pro.nvim'
+    use 'gbprod/nord.nvim'
+    use 'AlexvZyl/nordic.nvim'
+    use {
+        "mcchrish/zenbones.nvim",
+        requires = "rktjmp/lush.nvim"
+    }
+    use { "ellisonleao/gruvbox.nvim" }
+    use {
+        'olivercederborg/poimandres.nvim',
+        config = function()
+            require('poimandres').setup {
+                -- leave this setup function empty for default config
+                -- or refer to the configuration section
+                -- for configuration options
+            }
+        end
+    }
 
     use 'dhruvasagar/vim-table-mode'
     use "rafamadriz/friendly-snippets"
@@ -93,4 +114,5 @@ return require('packer').startup(function(use)
         end,
     }
     use 'nvim-treesitter/nvim-treesitter-context'
+    use 'junegunn/goyo.vim'
 end)
