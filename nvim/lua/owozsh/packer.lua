@@ -63,6 +63,7 @@ return require('packer').startup(function(use)
     use 'folke/tokyonight.nvim'
     use { "catppuccin/nvim", as = "catppuccin" }
     use "rebelot/kanagawa.nvim"
+    use { "ellisonleao/gruvbox.nvim" }
     use 'f-person/auto-dark-mode.nvim'
 
     use 'dhruvasagar/vim-table-mode'
@@ -90,4 +91,17 @@ return require('packer').startup(function(use)
     }
     use 'nvim-treesitter/nvim-treesitter-context'
     use 'junegunn/goyo.vim'
+
+    use {
+        "folke/which-key.nvim",
+        config = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+            require("which-key").setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        end
+    }
 end)

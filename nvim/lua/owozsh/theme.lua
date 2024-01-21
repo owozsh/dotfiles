@@ -1,5 +1,5 @@
 function SetColor(color)
-    color = color or 'solarized-flat'
+    color = color or 'kanagawa'
 
     require("catppuccin").setup({
         -- no_italic = true,
