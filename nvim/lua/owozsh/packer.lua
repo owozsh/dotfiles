@@ -19,10 +19,6 @@ return require('packer').startup(function(use)
     use 'nvim-tree/nvim-tree.lua'
     use 'nvim-tree/nvim-web-devicons'
     use { 'mg979/vim-visual-multi', branch = 'master' }
-    use {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-    }
     use 'mbbill/undotree'
     use {
         'VonHeikemen/lsp-zero.nvim',
@@ -58,8 +54,16 @@ return require('packer').startup(function(use)
         'stevearc/conform.nvim',
         config = function() require('conform').setup() end
     }
-    use 'romgrk/barbar.nvim'
+    use {
+        'j-hui/fidget.nvim',
+        config = function() require('fidget').setup() end
+    }
+
+    use 'ishan9299/nvim-solarized-lua'
     use 'folke/tokyonight.nvim'
+    use { "catppuccin/nvim", as = "catppuccin" }
+    use "rebelot/kanagawa.nvim"
+    use 'f-person/auto-dark-mode.nvim'
 
     use 'dhruvasagar/vim-table-mode'
     use "rafamadriz/friendly-snippets"

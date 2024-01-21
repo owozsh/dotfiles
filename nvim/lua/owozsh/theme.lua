@@ -1,6 +1,15 @@
 function SetColor(color)
-    color = color or 'tokyonight-night'
-    vim.o.background = "dark"
+    color = color or 'solarized-flat'
+
+    require("catppuccin").setup({
+        -- no_italic = true,
+        transparent_background = true
+    })
+
+    vim.opt.termguicolors = true
+
+    vim.g.solarized_diffmode = 'high'
+
     vim.cmd.colorscheme(color)
 end
 
