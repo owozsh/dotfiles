@@ -17,7 +17,6 @@ require("mason-lspconfig").setup {
         "pyright",
         "solargraph",
         "marksman",
-        "ltex",
         "tsserver",
         "eslint",
         "dockerls",
@@ -76,3 +75,5 @@ require("conform").setup({
         lsp_fallback = true,
     },
 })
+
+vim.keymap.set('n', 'gl', vim.diagnostic.open_float, {})

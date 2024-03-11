@@ -56,12 +56,6 @@ alias gb="git checkout"
 alias gbb="git checkout -b"
 alias gcz="npm run commit"
 
-# NVM
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # bun completions
 [ -s "/Users/owozsh/.bun/_bun" ] && source "/Users/owozsh/.bun/_bun"
 
@@ -78,8 +72,6 @@ alias t="todo.sh"
 
 alias dcu="docker compose up"
 
-eval "$(rbenv init - zsh)"
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export FZF_DEFAULT_COMMAND="fd . ."
@@ -88,7 +80,7 @@ export FZF_ALT_C_COMMAND="fd -t d --hidden --follow --search-path $HOME/Develope
 
 # bindkey -s '^f' '^ucd ./**\t\nclear\n'
 bindkey -s '^f' '^ucd $(ls -p | grep / | cat | fzf)\nclear\n'
-bindkey -s '^n' '^ucd ~/Home/Notes\nclear\n'
+bindkey -s '^n' '^ucd ~/Home/Notes\nclear\nnvim\n'
 bindkey -s '^e' '^unvim $(ls -p | grep -v / | cat | fzf)\n'
 
 alias cc='cd ../'
@@ -101,3 +93,5 @@ if [ -f '/Users/owozsh/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/User
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/owozsh/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/owozsh/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+export PATH="/opt/homebrew/opt/python@3.12/libexec/bin:$PATH"
