@@ -1,14 +1,20 @@
 function SetColor(color)
-    color = color or 'solarized-flat'
-
-    require("catppuccin").setup({
-        -- no_italic = true,
-        transparent_background = true
-    })
+    color = color or 'rose-pine'
 
     vim.opt.termguicolors = true
 
-    vim.g.solarized_diffmode = 'high'
+    require("gruvbox").setup({
+        bold = true,
+        italic = {
+            strings = false,
+            emphasis = true,
+            comments = true,
+            operators = false,
+            folds = true,
+        },
+        contrast = "", -- can be "hard", "soft" or empty string
+        transparent_mode = false,
+    })
 
     vim.cmd.colorscheme(color)
 end

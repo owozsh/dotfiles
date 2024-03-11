@@ -59,10 +59,8 @@ return require('packer').startup(function(use)
         config = function() require('fidget').setup() end
     }
 
-    use 'ishan9299/nvim-solarized-lua'
-    use 'folke/tokyonight.nvim'
-    use { "catppuccin/nvim", as = "catppuccin" }
-    use "rebelot/kanagawa.nvim"
+    use { "ellisonleao/gruvbox.nvim" }
+    use { "rose-pine/neovim", as = 'rose-pine' }
     use 'f-person/auto-dark-mode.nvim'
 
     use 'dhruvasagar/vim-table-mode'
@@ -79,15 +77,26 @@ return require('packer').startup(function(use)
     use 'tpope/vim-fugitive'
     use "tpope/vim-surround"
     use 'tpope/vim-commentary'
-    use {
-        "Pocco81/true-zen.nvim",
-        config = function()
-            require("true-zen").setup {
-                -- your config goes here
-                -- or just leave it empty :)
-            }
-        end,
-    }
     use 'nvim-treesitter/nvim-treesitter-context'
-    use 'junegunn/goyo.vim'
+    use 'folke/zen-mode.nvim'
+    use 'folke/twilight.nvim'
+
+    use {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        requires = { { "nvim-lua/plenary.nvim" } }
+    }
+
+    use {
+        "folke/which-key.nvim",
+        config = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+            require("which-key").setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        end
+    }
 end)
