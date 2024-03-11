@@ -15,6 +15,8 @@ plugins=(git; forgit; zsh-syntax-highlighting; asdf)
 
 source $ZSH/oh-my-zsh.sh
 
+source "$HOME/.cargo/env"
+
 export EDITOR="nvim"
 
 # NNN
@@ -78,15 +80,13 @@ alias t="todo.sh"
 
 alias dcu="docker compose up"
 
-eval "$(rbenv init - zsh)"
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export FZF_DEFAULT_COMMAND="fd . ."
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd -t d --hidden --follow --search-path $HOME/Developer"
 
-# bindkey -s '^f' '^ucd ./**\t\nclear\n'
+bindkey -s '^k' 'cd $(fd -t d --hidden --follow --search-path $HOME/Developer | fzf)\nclear\n'
 bindkey -s '^f' '^ucd $(ls -p | grep / | cat | fzf)\nclear\n'
 bindkey -s '^n' '^ucd ~/Home/Notes\nclear\n'
 bindkey -s '^e' '^unvim $(ls -p | grep -v / | cat | fzf)\n'
@@ -101,3 +101,6 @@ if [ -f '/Users/owozsh/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/User
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/owozsh/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/owozsh/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
