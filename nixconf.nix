@@ -21,6 +21,7 @@
     fzf
     fd
     asdf-vm
+    nixpkgs.texlive.combined.scheme-full
     pkgs.zsh-forgit
     pkgs.oh-my-zsh
     pkgs.zsh
