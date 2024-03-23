@@ -97,3 +97,5 @@ if [ -f '/Users/owozsh/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/User
 if [ -f '/Users/owozsh/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/owozsh/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+source ~/Developer/rr.sh

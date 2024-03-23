@@ -1,5 +1,5 @@
 function SetColor(color)
-    color = color or 'rose-pine'
+    color = color or 'gruvbox'
 
     vim.opt.termguicolors = true
 
