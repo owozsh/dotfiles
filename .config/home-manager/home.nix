@@ -34,7 +34,7 @@
 
   home.file = {
     ".config/nvim" = {
-        source = "/home/owozsh/Developer/dotfiles/nvim";
+        source = "/home/owozsh/Developer/dotfiles/.config/nvim";
       };
   };
 
