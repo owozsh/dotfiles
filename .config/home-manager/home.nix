@@ -7,6 +7,9 @@
   home.stateVersion = "23.11";
 
   home.packages = with pkgs; [
+    ripgrep
+    tmux
+    direnv
     clipman
     nodejs
     ruby
@@ -74,7 +77,7 @@
     oh-my-zsh = {
         enable = true;
 	theme = "robbyrussell";
-        plugins = [ "git" "asdf" ];
+        plugins = [ "git" "asdf" "direnv" ];
     };    
   };
 
