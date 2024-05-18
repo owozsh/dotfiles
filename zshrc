@@ -11,11 +11,9 @@ ZSH_THEME="robbyrussell"
 
 ZSH_DISABLE_COMPFIX=true
 
-plugins=(git; forgit; zsh-syntax-highlighting; asdf)
+plugins=(git; zsh-syntax-highlighting; asdf)
 
 source $ZSH/oh-my-zsh.sh
-
-source "$HOME/.cargo/env"
 
 export EDITOR="nvim"
 
@@ -96,6 +94,6 @@ if [ -f '/Users/owozsh/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/User
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/owozsh/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/owozsh/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# source ~/Developer/rr.sh
+# alias code="code --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto --unity-launch %F"
 
-source ~/Developer/rr.sh
