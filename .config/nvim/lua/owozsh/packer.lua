@@ -60,6 +60,9 @@ return require('packer').startup(function(use)
     }
 
     use { "ellisonleao/gruvbox.nvim" }
+    use 'Mofiqul/dracula.nvim'
+    use { 'maxmx03/solarized.nvim' }
+    use "rebelot/kanagawa.nvim"
     use { "rose-pine/neovim", as = 'rose-pine' }
     use 'f-person/auto-dark-mode.nvim'
 
