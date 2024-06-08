@@ -4,6 +4,9 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
+rm -rf ~/.config/zellij
+ln -sf ~/Developer/dotfiles/.config/zellij ~/.config/zellij
+
 rm -rf ~/.config/nvim
 ln -sf ~/Developer/dotfiles/.config/nvim ~/.config/nvim
 

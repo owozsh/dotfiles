@@ -17,6 +17,8 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR="nvim"
 
+alias fd="fdfind"
+
 # NNN
 
 export NNN_FIFO='/tmp/nnn.fifo'
@@ -94,6 +96,8 @@ if [ -f '/Users/owozsh/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/User
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/owozsh/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/owozsh/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
-source ~/rr.sh
+source ~/Developer/rr.sh
 # alias code="code --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto --unity-launch %F"
 
+eval "$(zellij setup --generate-auto-start zsh)"
+eval "$(direnv hook zsh)"
