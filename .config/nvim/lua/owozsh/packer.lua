@@ -59,9 +59,14 @@ return require('packer').startup(function(use)
         config = function() require('fidget').setup() end
     }
 
+    use {
+        "zenbones-theme/zenbones.nvim",
+        requires = "rktjmp/lush.nvim"
+    }
+    use "olimorris/onedarkpro.nvim"
     use { "ellisonleao/gruvbox.nvim" }
     use 'Mofiqul/dracula.nvim'
-    use { 'maxmx03/solarized.nvim' }
+    use { 'ishan9299/nvim-solarized-lua' }
     use "rebelot/kanagawa.nvim"
     use { "rose-pine/neovim", as = 'rose-pine' }
     use 'f-person/auto-dark-mode.nvim'
