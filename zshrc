@@ -60,3 +60,5 @@ source ~/Developer/rr.sh
 
 # Created by `pipx` on 2024-08-04 14:52:05
 export PATH="$PATH:/home/owozsh/.local/bin"
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

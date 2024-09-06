@@ -1,8 +1,8 @@
 function SetColor(color)
-    color = color or 'solarized-flat'
+    color = color or 'gruvbox'
 
     vim.opt.termguicolors = true
-    -- vim.opt.background = 'light'
+    vim.opt.background = 'dark'
 
     require("rose-pine").setup({
         styles = {
@@ -22,7 +22,7 @@ function SetColor(color)
             folds = true,
         },
         contrast = "", -- can be "hard", "soft" or empty string
-        transparent_mode = false,
+        transparent_mode = true,
     })
 
 
