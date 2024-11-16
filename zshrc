@@ -9,7 +9,10 @@ source $ZSH/oh-my-zsh.sh
 
 # services
 
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(direnv hook zsh)"
+# eval "$(zellij setup --generate-auto-start zsh)"
+
 . "$HOME/.asdf/asdf.sh"
 fpath=(${ASDF_DIR}/completions $fpath)
 autoload -Uz compinit && compinit
@@ -33,6 +36,7 @@ alias gd="git diff"
 alias gbb="git checkout -b"
 alias gcz="npm run commit"
 alias gpf="git push --force-with-lease"
+alias grh="git reset --hard"
 
 # other aliases
 alias cdd="cd ~/Developer; clear"
@@ -49,7 +53,7 @@ export FZF_ALT_C_COMMAND="fd -t d --hidden --follow --search-path $HOME/Develope
 bindkey -s '^k' 'cd $(fd -t d --hidden --follow --search-path $HOME/Developer | fzf)\nclear\n'
 bindkey -s '^f' '^ucd $(ls -p | grep / | cat | fzf)\nclear\n'
 bindkey -s '^n' '^ucd ~/Home/Notes\nclear\nnvim\n'
-bindkey -s '^e' '^unvim $(ls -p | grep -v / | cat | fzf)\n'
+# bindkey -s '^e' '^unvim $(ls -p | grep -v / | cat | fzf)\n'
 
 
 # do I need this?
@@ -61,4 +65,4 @@ source ~/Developer/rr.sh
 # Created by `pipx` on 2024-08-04 14:52:05
 export PATH="$PATH:/home/owozsh/.local/bin"
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+. "/home/owozsh/.deno/env"
