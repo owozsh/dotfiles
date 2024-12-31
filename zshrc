@@ -3,7 +3,7 @@
 ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 ZSH_DISABLE_COMPFIX=true
-plugins=(git; zsh-syntax-highlighting; asdf)
+plugins=(git; zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -41,7 +41,6 @@ alias grh="git reset --hard"
 # other aliases
 alias cdd="cd ~/Developer; clear"
 alias cc='cd ../'
-alias fd="fdfind"
 alias dcu="docker compose up"
 alias pyvsct='python3 ~/Developer/pyvsct/main.py'
 
@@ -55,14 +54,3 @@ bindkey -s '^f' '^ucd $(ls -p | grep / | cat | fzf)\nclear\n'
 bindkey -s '^n' '^ucd ~/Home/Notes\nclear\nnvim\n'
 # bindkey -s '^e' '^unvim $(ls -p | grep -v / | cat | fzf)\n'
 
-
-# do I need this?
-export PATH="/usr/local/opt/postgresql/bin:$PATH"
-
-# work utilities
-source ~/Developer/rr.sh
-
-# Created by `pipx` on 2024-08-04 14:52:05
-export PATH="$PATH:/home/owozsh/.local/bin"
-
-. "/home/owozsh/.deno/env"
