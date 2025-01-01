@@ -22,7 +22,7 @@ export EDITOR="nvim"
 # config aliases
 alias czsh="nvim ~/.zshrc"
 alias szsh="source ~/.zshrc"
-alias cnvim="nvim ~/.config/nvim/init.vim"
+alias cnvim="nvim ~/.config/nvim/init.lua"
 alias ckitty="nvim ~/.config/kitty/kitty.conf"
 alias ls="exa --icons --git"
 
