@@ -39,6 +39,10 @@ require("lazy").setup({
 			dependencies = { { "echasnovski/mini.icons", opts = {} } },
 		},
 		{
+			"olimorris/onedarkpro.nvim",
+			priority = 1000, -- Ensure it loads first
+		},
+		{
 			"rose-pine/neovim",
 			name = "rose-pine",
 			opts = {
@@ -466,4 +470,4 @@ vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "Definitions" })
 vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "References" })
 
 -- Colorscheme
-vim.cmd("colorscheme gruvbox-material")
+vim.cmd("colorscheme onedark")
