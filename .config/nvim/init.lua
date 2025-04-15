@@ -365,6 +365,53 @@ require("lazy").setup({
 				})
 			end,
 		},
+		{
+			"maxmx03/solarized.nvim",
+			lazy = false,
+			priority = 1000,
+			opts = {},
+			config = function(_, opts)
+				require("solarized").setup(opts)
+			end,
+		},
+		{
+			"Shatur/neovim-ayu",
+			lazy = false,
+			priority = 1000,
+			opts = {
+				overrides = {
+					Normal = { bg = "None" },
+					NormalFloat = { bg = "none" },
+					ColorColumn = { bg = "None" },
+					SignColumn = { bg = "None" },
+					Folded = { bg = "None" },
+					FoldColumn = { bg = "None" },
+					CursorLine = { bg = "None" },
+					CursorColumn = { bg = "None" },
+					VertSplit = { bg = "None" },
+				},
+			},
+			config = function(_, opts)
+				require("ayu").setup(opts)
+			end,
+		},
+		{
+			"ptdewey/darkearth-nvim",
+			priority = 1000,
+		},
+		{
+			"xero/miasma.nvim",
+			lazy = false,
+			priority = 1000,
+		},
+		{
+			"folke/zen-mode.nvim",
+			opts = {
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			},
+		},
 	},
 	install = {
 		colorscheme = { "habamax" },
@@ -469,5 +516,28 @@ vim.keymap.set("n", "<leader>o", builtin.oldfiles, { desc = "Oldfiles" })
 vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "Definitions" })
 vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "References" })
 
+vim.keymap.set("n", "<leader>z", require("zen-mode").toggle, { desc = "Toggle Zen Mode" })
+vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, { desc = "References" })
+
 -- Colorscheme
-vim.cmd("colorscheme onedark")
+vim.o.termguicolors = true
+vim.o.background = "dark"
+vim.cmd.colorscheme("miasma")
+
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+	pattern = "*.js",
+	command = "set filetype=javascriptreact",
+})
+
+vim.filetype.add({
+	extension = {
+		js = "javascriptreact",
+	},
+})
+
+require("nvim-treesitter.configs").setup({
+	ensure_installed = { "javascript", "typescript", "tsx" },
+	highlight = {
+		enable = true,
+	},
+})

@@ -9,13 +9,8 @@ source $ZSH/oh-my-zsh.sh
 
 # services
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(direnv hook zsh)"
 # eval "$(zellij setup --generate-auto-start zsh)"
-
-. "$HOME/.asdf/asdf.sh"
-fpath=(${ASDF_DIR}/completions $fpath)
-autoload -Uz compinit && compinit
 
 export EDITOR="nvim"
 
@@ -24,7 +19,6 @@ alias czsh="nvim ~/.zshrc"
 alias szsh="source ~/.zshrc"
 alias cnvim="nvim ~/.config/nvim/init.lua"
 alias ckitty="nvim ~/.config/kitty/kitty.conf"
-alias ls="exa --icons --git"
 
 # git
 alias ga="git add ."
@@ -54,3 +48,5 @@ bindkey -s '^f' '^ucd $(ls -p | grep / | cat | fzf)\nclear\n'
 bindkey -s '^n' '^ucd ~/Home/Notes\nclear\nnvim\n'
 # bindkey -s '^e' '^unvim $(ls -p | grep -v / | cat | fzf)\n'
 
+source ~/Developer/runrunit.sh
+eval "$(mise activate zsh)"
