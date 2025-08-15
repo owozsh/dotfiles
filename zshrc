@@ -49,4 +49,5 @@ bindkey -s '^n' '^ucd ~/Home/Notes\nclear\nnvim\n'
 # bindkey -s '^e' '^unvim $(ls -p | grep -v / | cat | fzf)\n'
 
 source ~/Developer/runrunit.sh
+
 eval "$(mise activate zsh)"

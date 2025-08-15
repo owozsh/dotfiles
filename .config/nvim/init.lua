@@ -28,16 +28,12 @@ vim.opt.autoindent = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
+vim.opt.undofile = true
 
 require("lazy").setup({
 	spec = {
 		{ "norcalli/nvim-colorizer.lua" },
 		{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-		{
-			"stevearc/oil.nvim",
-			opts = {},
-			dependencies = { { "echasnovski/mini.icons", opts = {} } },
-		},
 		{
 			"olimorris/onedarkpro.nvim",
 			priority = 1000, -- Ensure it loads first
@@ -273,6 +269,9 @@ require("lazy").setup({
 			end,
 		},
 		{
+			"mbbill/undotree",
+		},
+		{
 			"lewis6991/gitsigns.nvim",
 			config = function()
 				local gitsigns = require("gitsigns")
@@ -369,7 +368,20 @@ require("lazy").setup({
 			"maxmx03/solarized.nvim",
 			lazy = false,
 			priority = 1000,
-			opts = {},
+			opts = {
+				transparent = {
+					enabled = true, -- Master switch to enable transparency
+					pmenu = true, -- Popup menu (e.g., autocomplete suggestions)
+					normal = true, -- Main editor window background
+					normalfloat = true, -- Floating windows
+					neotree = true, -- Neo-tree file explorer
+					nvimtree = true, -- Nvim-tree file explorer
+					whichkey = true, -- Which-key popup
+					telescope = true, -- Telescope fuzzy finder
+					lazy = true, -- Lazy plugin manager UI
+					mason = true, -- Mason manage external tooling
+				},
+			},
 			config = function(_, opts)
 				require("solarized").setup(opts)
 			end,
@@ -412,6 +424,29 @@ require("lazy").setup({
 				-- refer to the configuration section below
 			},
 		},
+		{
+			"nvim-tree/nvim-tree.lua",
+			version = "*",
+			lazy = false,
+			dependencies = {
+				"nvim-tree/nvim-web-devicons",
+			},
+			config = function()
+				require("nvim-tree").setup({})
+			end,
+		},
+		{
+			"metalelf0/black-metal-theme-neovim",
+			lazy = false,
+			priority = 1000,
+			config = function()
+				require("black-metal").setup({
+					-- optional configuration here
+				})
+				require("black-metal").load()
+			end,
+		},
+		{ "kepano/flexoki-neovim", name = "flexoki" },
 	},
 	install = {
 		colorscheme = { "habamax" },
@@ -438,26 +473,6 @@ require("lazy").setup({
 
 require("colorizer").setup()
 require("ibl").setup({ indent = { char = "." } })
-require("oil").setup({
-	keymaps = {
-		["g?"] = { "actions.show_help", mode = "n" },
-		["<CR>"] = "actions.select",
-		["<C-v>"] = { "actions.select", opts = { vertical = true } },
-		["<C-x>"] = { "actions.select", opts = { horizontal = true } },
-		["<C-t>"] = { "actions.select", opts = { tab = true } },
-		["<C-p>"] = "actions.preview",
-		["<C-c>"] = { "actions.close", mode = "n" },
-		["<C-l>"] = "actions.refresh",
-		["-"] = { "actions.parent", mode = "n" },
-		["_"] = { "actions.open_cwd", mode = "n" },
-		["`"] = { "actions.cd", mode = "n" },
-		["~"] = { "actions.cd", opts = { scope = "tab" }, mode = "n" },
-		["gs"] = { "actions.change_sort", mode = "n" },
-		["gx"] = "actions.open_external",
-		["g."] = { "actions.toggle_hidden", mode = "n" },
-		["g\\"] = { "actions.toggle_trash", mode = "n" },
-	},
-})
 
 -- Add blank lines
 map("n", " ", "O<ESC>")
@@ -482,11 +497,6 @@ map("v", "<A-J>", "y`>p")
 
 map("n", "<A-K>", "yyP")
 map("v", "<A-J>", "y`<P")
-
--- File explorer
-map("n", "<leader>e", function()
-	require("oil").toggle_float()
-end, "File Explorer")
 
 -- Window Navigation
 map("n", "<C-h>", "<C-w>h")
@@ -519,10 +529,27 @@ vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "References" })
 vim.keymap.set("n", "<leader>z", require("zen-mode").toggle, { desc = "Toggle Zen Mode" })
 vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, { desc = "References" })
 
--- Colorscheme
-vim.o.termguicolors = true
-vim.o.background = "dark"
-vim.cmd.colorscheme("miasma")
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+require("nvim-tree").setup({
+	view = {
+		width = 60,
+	},
+	filters = {
+		dotfiles = false,
+	},
+	update_focused_file = {
+		enable = true,
+	},
+	renderer = {
+		indent_width = 2,
+	},
+})
+
+vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file tree" })
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle undo tree" })
+vim.keymap.set("n", "<leader>qf", vim.lsp.buf.code_action, { desc = "LSP Quick Fix" })
 
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	pattern = "*.js",
@@ -541,3 +568,37 @@ require("nvim-treesitter.configs").setup({
 		enable = true,
 	},
 })
+
+-- Colorscheme
+vim.o.termguicolors = true
+vim.o.background = "dark"
+
+require("gruvbox").setup({
+	terminal_colors = true, -- add neovim terminal colors
+	undercurl = true,
+	underline = true,
+	bold = false,
+	italic = {
+		strings = false,
+		emphasis = false,
+		comments = false,
+		operators = false,
+		folds = false,
+	},
+	strikethrough = false,
+	invert_selection = false,
+	invert_signs = false,
+	invert_tabline = false,
+	inverse = true, -- invert background for search, diffs, statuslines and errors
+	contrast = "hard", -- can be "hard", "soft" or empty string
+	palette_overrides = {},
+	overrides = {},
+	dim_inactive = false,
+	transparent_mode = true,
+})
+
+vim.cmd.colorscheme("flexoki-dark")
+
+vim.o.scrolloff = 999
+
+vim.diagnostic.config({ virtual_text = false, virtual_lines = { current_line = true } })
