@@ -1,0 +1,15 @@
+font-family = Berkeley Mono
+font-size = 14
+
+theme = flexoki-dark
+
+window-padding-x = 20
+window-padding-y = 20
+
+macos-titlebar-style = hidden
+# macos-titlebar-style = tabs
+
+macos-option-as-alt = left
+
+background-opacity = 0.9
+# background-blur = 50
