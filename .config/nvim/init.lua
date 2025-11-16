@@ -25,9 +25,12 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.smartindent = true
 vim.opt.autoindent = true
+
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
+vim.opt.expandtab = true
+
 vim.opt.undofile = true
 
 require("lazy").setup({
@@ -389,7 +392,7 @@ require("lazy").setup({
 					-- <c-k>: Toggle signature help
 					--
 					-- See :h blink-cmp-config-keymap for defining your own keymap
-					preset = "default",
+					preset = "enter",
 
 					-- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
 					--    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
