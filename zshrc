@@ -43,7 +43,22 @@ alias pyvsct='python3 ~/Developer/pyvsct/main.py'
 export FZF_DEFAULT_COMMAND="fd . ."
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd -t d --hidden --follow --search-path $HOME/Developer"
-bindkey -s '^k' 'cd $(fd -t d --hidden --follow --search-path $HOME/Developer | fzf)\nclear\n'
+#
+# bindkey -s '^k' 'cd $(fd -t d --hidden --follow --search-path $HOME/Developer | fzf)\nclear\n'
+
+fzf-dev-cd() {
+  local dir
+  dir=$(fd -t d --max-depth 1 --hidden --follow . $HOME/Developer | fzf --height 40% --reverse --preview 'ls -la {}')
+  if [[ -n $dir ]]; then
+    cd "$dir"
+    zle reset-prompt
+  fi
+  clear
+}
+zle -N fzf-dev-cd
+
+bindkey '^k' fzf-dev-cd
+
 bindkey -s '^f' '^ucd $(ls -p | grep / | cat | fzf)\nclear\n'
 bindkey -s '^n' '^ucd ~/Home/Notes\nclear\nnvim\n'
 # bindkey -s '^e' '^unvim $(ls -p | grep -v / | cat | fzf)\n'

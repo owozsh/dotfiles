@@ -449,6 +449,9 @@ require("lazy").setup({
 			"mbbill/undotree",
 		},
 		{
+			"tpope/vim-fugitive",
+		},
+		{
 			"lewis6991/gitsigns.nvim",
 			config = function()
 				local gitsigns = require("gitsigns")
@@ -699,8 +702,8 @@ require("nvim-treesitter.configs").setup({
 
 -- Colorscheme
 vim.o.termguicolors = true
-vim.o.background = "light"
-vim.cmd.colorscheme("solarized")
+vim.o.background = "dark"
+vim.cmd.colorscheme("flexoki")
 
 vim.o.scrolloff = 999
 
