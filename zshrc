@@ -65,15 +65,17 @@ bindkey -s '^n' '^ucd ~/Home/Notes\nclear\nnvim\n'
 # bindkey -s '^e' '^unvim $(ls -p | grep -v / | cat | fzf)\n'
 
 eval "$(mise activate zsh)"
-# nube autocomplete fix for zsh
-autoload -U +X bashcompinit && bashcompinit
-autoload -U +X compinit && compinit
 
-### Added by nube
-export NUBE_TIENDANUBE_ROOT="/Users/nuver/Developer/tiendanube"
-eval "$(/Users/nuver/.nube/bin/nube init -)"
-export DOCKER_CLIENT_TIMEOUT=300
-export COMPOSE_HTTP_TIMEOUT=300
+if [ -d "/Users/nuver/Developer/tiendanube" ]; then
+  autoload -U +X bashcompinit && bashcompinit
+  autoload -U +X compinit && compinit
 
-alias nns="yarn start:dev"
-alias nnf="yarn dev:local-api"
+  export NUBE_TIENDANUBE_ROOT="/Users/nuver/Developer/tiendanube"
+  eval "$(/Users/nuver/.nube/bin/nube init -)"
+  export DOCKER_CLIENT_TIMEOUT=300
+  export COMPOSE_HTTP_TIMEOUT=300
+
+  alias nns="yarn start:dev"
+  alias nnf="yarn dev:local-api"
+fi
+
