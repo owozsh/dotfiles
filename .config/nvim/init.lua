@@ -292,48 +292,6 @@ require("lazy").setup({
 				})
 			end,
 		},
-
-		{ -- Autoformat
-			"stevearc/conform.nvim",
-			event = { "BufWritePre" },
-			cmd = { "ConformInfo" },
-			keys = {
-				{
-					"<leader>F",
-					function()
-						require("conform").format({ async = true, lsp_format = "fallback" })
-					end,
-					mode = "",
-					desc = "[F]ormat buffer",
-				},
-			},
-			opts = {
-				notify_on_error = false,
-				format_on_save = function(bufnr)
-					-- Disable "format_on_save lsp_fallback" for languages that don't
-					-- have a well standardized coding style. You can add additional
-					-- languages here or re-enable it for the disabled ones.
-					local disable_filetypes = { c = true, cpp = true }
-					if disable_filetypes[vim.bo[bufnr].filetype] then
-						return nil
-					else
-						return {
-							timeout_ms = 500,
-							lsp_format = "fallback",
-						}
-					end
-				end,
-				formatters_by_ft = {
-					lua = { "stylua" },
-					-- Conform can also run multiple formatters sequentially
-					-- python = { "isort", "black" },
-					--
-					-- You can use 'stop_after_first' to run the first available formatter from the list
-					javascript = { "prettierd", "prettier", stop_after_first = true },
-				},
-			},
-		},
-
 		{ -- Autocompletion
 			"saghen/blink.cmp",
 			event = "VimEnter",
@@ -582,6 +540,10 @@ require("lazy").setup({
 			dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 			opts = {},
 		},
+    {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' }
+    }
 	},
 	checker = {
 		enabled = true,
@@ -707,9 +669,74 @@ vim.cmd.colorscheme("flexoki")
 
 vim.o.scrolloff = 999
 
-vim.diagnostic.config({ virtual_text = false, virtual_lines = { current_line = true } })
+-- vim.diagnostic.config({ virtual_text = false, virtual_lines = { current_line = true } })
 
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
 vim.api.nvim_set_hl(0, "Pmenu", { bg = "none" })
+
+vim.keymap.set('n', ']g', ':Gitsigns next_hunk<CR>', { desc = 'Go to next Git hunk' })
+vim.keymap.set('n', '[g', ':Gitsigns prev_hunk<CR>', { desc = 'Go to previous Git hunk' })
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = { "*.tsx", "*.ts", "*.jsx", "*.js" },
+	callback = function()
+		vim.cmd("silent! EslintFixAll")
+	end,
+})
+
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = 'auto',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {
+      statusline = {},
+      winbar = {},
+    },
+    ignore_focus = {},
+    always_divide_middle = true,
+    always_show_tabline = true,
+    globalstatus = false,
+    refresh = {
+      statusline = 1000,
+      tabline = 1000,
+      winbar = 1000,
+      refresh_time = 16, -- ~60fps
+      events = {
+        'WinEnter',
+        'BufEnter',
+        'BufWritePost',
+        'SessionLoadPost',
+        'FileChangedShellPost',
+        'VimResized',
+        'Filetype',
+        'CursorMoved',
+        'CursorMovedI',
+        'ModeChanged',
+      },
+    }
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  winbar = {},
+  inactive_winbar = {},
+  extensions = {}
+}

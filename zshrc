@@ -52,9 +52,10 @@ fzf-dev-cd() {
   if [[ -n $dir ]]; then
     cd "$dir"
     zle reset-prompt
+    clear
   fi
-  clear
 }
+
 zle -N fzf-dev-cd
 
 bindkey '^k' fzf-dev-cd
@@ -73,7 +74,6 @@ export NUBE_TIENDANUBE_ROOT="/Users/nuver/Developer/tiendanube"
 eval "$(/Users/nuver/.nube/bin/nube init -)"
 export DOCKER_CLIENT_TIMEOUT=300
 export COMPOSE_HTTP_TIMEOUT=300
-
 
 alias nns="yarn start:dev"
 alias nnf="yarn dev:local-api"
