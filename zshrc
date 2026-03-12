@@ -43,22 +43,8 @@ alias pyvsct='python3 ~/Developer/pyvsct/main.py'
 export FZF_DEFAULT_COMMAND="fd . ."
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd -t d --hidden --follow --search-path $HOME/Developer"
-#
-# bindkey -s '^k' 'cd $(fd -t d --hidden --follow --search-path $HOME/Developer | fzf)\nclear\n'
 
-fzf-dev-cd() {
-  local dir
-  dir=$(fd -t d --max-depth 1 --hidden --follow . $HOME/Developer | fzf --height 40% --reverse --preview 'ls -la {}')
-  if [[ -n $dir ]]; then
-    cd "$dir"
-    zle reset-prompt
-    clear
-  fi
-}
-
-zle -N fzf-dev-cd
-
-bindkey '^k' fzf-dev-cd
+bindkey -s '^k' '^ucd $HOME/Developer/$(ls $HOME/Developer | fzf --reverse --preview "ls -1 $HOME/Developer/{}")\nclear\n'
 
 bindkey -s '^f' '^ucd $(ls -p | grep / | cat | fzf)\nclear\n'
 bindkey -s '^n' '^ucd ~/Home/Notes\nclear\nnvim\n'
@@ -79,3 +65,5 @@ if [ -d "/Users/nuver/Developer/tiendanube" ]; then
   alias nnf="yarn dev:local-api"
 fi
 
+
+. "$HOME/.local/bin/env"
