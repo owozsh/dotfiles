@@ -44,7 +44,7 @@ export FZF_DEFAULT_COMMAND="fd . ."
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd -t d --hidden --follow --search-path $HOME/Developer"
 
-bindkey -s '^k' '^ucd $HOME/Developer/$(ls $HOME/Developer | fzf --reverse --preview "ls -1 $HOME/Developer/{}")\nclear\n'
+bindkey -s '^k' '^ucd $HOME/Developer/$(ls $HOME/Developer | fzf --reverse --preview "eza -1 --icons --color=always $HOME/Developer/{}")\nclear\n'
 
 bindkey -s '^f' '^ucd $(ls -p | grep / | cat | fzf)\nclear\n'
 bindkey -s '^n' '^ucd ~/Home/Notes\nclear\nnvim\n'
@@ -65,5 +65,3 @@ if [ -d "/Users/nuver/Developer/tiendanube" ]; then
   alias nnf="yarn dev:local-api"
 fi
 
-
-. "$HOME/.local/bin/env"
