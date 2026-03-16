@@ -19,7 +19,7 @@ alias czsh="nvim ~/.zshrc"
 alias szsh="source ~/.zshrc"
 alias cnvim="nvim ~/.config/nvim/init.lua"
 alias ckitty="nvim ~/.config/kitty/kitty.conf"
-alias caero="nvim .aerospace.toml"
+alias caero="nvim ~/.aerospace.toml"
 
 # git
 alias ga="git add ."
