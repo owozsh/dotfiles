@@ -81,3 +81,5 @@ fetch_dotfiles_updates() {
 }
 
 fetch_dotfiles_updates
+
+echo heloooooooooooooooo
