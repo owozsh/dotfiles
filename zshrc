@@ -88,6 +88,8 @@ fetch_dotfiles_updates() {
   fi
 
   git -C "$dir" rebase origin/main && exec zsh
+
+  echo helloooooooooooooooo
 }
 
 fetch_dotfiles_updates
