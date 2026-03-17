@@ -66,6 +66,11 @@ if [ -d "/Users/nuver/Developer/tiendanube" ]; then
   alias nnf="yarn dev:local-api"
 fi
 
+gacp() {
+  [[ -z "$1" ]] && echo "Usage: gac <message>" && return 1
+  git add . && git commit -am "$*" && git push
+}
+
 ping() {
   echo pong
 }
