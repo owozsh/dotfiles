@@ -67,7 +67,7 @@ if [ -d "/Users/nuver/Developer/tiendanube" ]; then
 fi
 
 gacp() {
-  [[ -z "$1" ]] && echo "Usage: gac <message>" && return 1
+  [[ -z "$1" ]] && echo "Usage: gacp <message>" && return 1
   git add . && git commit -am "$*" && git push
 }
 
