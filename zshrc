@@ -122,6 +122,7 @@ fetch_dotfiles_updates() {
   incoming="$(git -C "$dir" log HEAD..origin/main --oneline)"
 
   if [[ -z "$incoming" ]]; then
+    sleep 0.8 && clear
     echo ""
     echo -e "  ${cyan}${bold}dotfiles${reset}  ${green}✔ up to date${reset}"
     echo ""
@@ -138,7 +139,6 @@ fetch_dotfiles_updates() {
   if git -C "$dir" rebase origin/main --quiet; then
     _ok "Done"
     echo ""
-    exec zsh
   else
     _error "Rebase failed — resolve conflicts and run: git rebase --continue"
     echo ""
