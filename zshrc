@@ -73,8 +73,8 @@ fetch_dotfiles_updates() {
   if [ -n "$STATUS" ]; then
     echo 'Push dotfiles updates before updating'
   else
-    git -C "$DIR" fetch --all
-    git -C "$DIR" rebase origin/main
+    git -C "$DIR" fetch --all --porcerlain
+    git -C "$DIR" rebase origin/main --porcerlain
   fi
 }
 
