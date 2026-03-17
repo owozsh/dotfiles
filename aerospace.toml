@@ -47,7 +47,7 @@ automatically-unhide-macos-hidden-apps = false
 # Fallback value (if you omit the key): persistent-workspaces = []
 
 
-persistent-workspaces = ["1","2","3","D","Q","W","S", "C"]
+persistent-workspaces = ["1","2","3","D","Q","W","S", "A"]
 
 # A callback that runs every time binding mode changes
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -136,7 +136,7 @@ on-mode-changed = []
     alt-s = 'workspace S'
     alt-q = 'workspace Q'
     alt-w = 'workspace W'
-    alt-c = 'workspace C'
+    alt-a = 'workspace A'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
     alt-shift-1 = 'move-node-to-workspace 1'
@@ -146,7 +146,7 @@ on-mode-changed = []
     alt-shift-s = 'move-node-to-workspace S'
     alt-shift-q = 'move-node-to-workspace Q'
     alt-shift-w = 'move-node-to-workspace W'
-    alt-shift-c = 'move-node-to-workspace C'
+    alt-shift-a = 'move-node-to-workspace A'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
     alt-tab = 'workspace-back-and-forth'
@@ -186,7 +186,7 @@ on-mode-changed = []
 
 [[on-window-detected]]
     if.app-id = 'dev.zed.Zed'
-    run = 'move-node-to-workspace C'
+    run = 'move-node-to-workspace A'
 
 [[on-window-detected]]
     if.app-id = 'net.whatsapp.WhatsApp'
