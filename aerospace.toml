@@ -47,7 +47,7 @@ automatically-unhide-macos-hidden-apps = false
 # Fallback value (if you omit the key): persistent-workspaces = []
 
 
-persistent-workspaces = ["1","2","3","D","B","W","S", "C"]
+persistent-workspaces = ["1","2","3","D","Q","W","S", "C"]
 
 # A callback that runs every time binding mode changes
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -134,7 +134,7 @@ on-mode-changed = []
     alt-3 = 'workspace 3'
     alt-d = 'workspace D'
     alt-s = 'workspace S'
-    alt-b = 'workspace B'
+    alt-q = 'workspace Q'
     alt-w = 'workspace W'
     alt-c = 'workspace C'
 
@@ -144,7 +144,7 @@ on-mode-changed = []
     alt-shift-3 = 'move-node-to-workspace 3'
     alt-shift-d = 'move-node-to-workspace D'
     alt-shift-s = 'move-node-to-workspace S'
-    alt-shift-b = 'move-node-to-workspace B'
+    alt-shift-q = 'move-node-to-workspace Q'
     alt-shift-w = 'move-node-to-workspace W'
     alt-shift-c = 'move-node-to-workspace C'
 
@@ -178,7 +178,7 @@ on-mode-changed = []
 
 [[on-window-detected]]
     if.app-id = 'app.zen-browser.zen'
-    run = 'move-node-to-workspace B'
+    run = 'move-node-to-workspace Q'
 
 [[on-window-detected]]
     if.app-id = 'com.spotify.client'
