@@ -67,15 +67,27 @@ if [ -d "/Users/nuver/Developer/tiendanube" ]; then
 fi
 
 fetch_dotfiles_updates() {
-  DIR="$HOME/Developer/dotfiles"
-  STATUS="$(git -C "$DIR" status --porcelain)"
+  local dir="$HOME/Developer/dotfiles"
 
-  if [ -n "$STATUS" ]; then
-    echo 'Push dotfiles updates before updating'
-  else
-    git -C "$DIR" fetch --all
-    git -C "$DIR" rebase origin/main
+  if ! git -C "$dir" rev-parse --is-inside-work-tree &>/dev/null; then
+    echo "Error: $dir is not a git repository"
+    return 1
   fi
+
+  if [[ -n "$(git -C "$dir" status --porcelain)" ]]; then
+    echo "Uncommitted changes found — push before updating:"
+    git -C "$dir" status --short
+    return 1
+  fi
+
+  git -C "$dir" fetch --all
+
+  if [[ -z "$(git -C "$dir" log HEAD..origin/main --oneline)" ]]; then
+    echo "Already up to date."
+    return 0
+  fi
+
+  git -C "$dir" rebase origin/main && exec zsh
 }
 
 fetch_dotfiles_updates
