@@ -121,7 +121,6 @@ fetch_dotfiles_updates() {
   incoming="$(git -C "$dir" log HEAD..origin/main --oneline)"
 
   if [[ -z "$incoming" ]]; then
-    sleep 0.8 && clear
     echo ""
     echo -e "  ${cyan}${bold}dotfiles${reset}  ${green}✔ up to date${reset}"
     echo ""
