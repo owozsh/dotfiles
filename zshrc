@@ -73,24 +73,72 @@ ping() {
 fetch_dotfiles_updates() {
   local dir="$HOME/Developer/dotfiles"
 
+  local reset="\033[0m"
+  local bold="\033[1m"
+  local dim="\033[2m"
+  local green="\033[32m"
+  local yellow="\033[33m"
+  local blue="\033[34m"
+  local red="\033[31m"
+  local cyan="\033[36m"
+
+  _step()  { echo -e "  ${blue}→${reset} ${bold}$*${reset}"; }
+  _ok()    { echo -e "  ${green}✔${reset} $*"; }
+  _warn()  { echo -e "  ${yellow}⚠${reset} $*"; }
+  _error() { echo -e "  ${red}✖${reset} $*"; }
+  _dim()   { echo -e "${dim}$*${reset}"; }
+
+  echo ""
+  echo -e "  ${cyan}${bold}dotfiles${reset}"
+  _dim "  ─────────────────────────"
+
+  _step "Checking repository..."
   if ! git -C "$dir" rev-parse --is-inside-work-tree &>/dev/null; then
-    echo "Error: $dir is not a git repository"
+    _error "Not a git repository: $dir"
     return 1
   fi
 
+  _step "Checking working tree..."
   if [[ -n "$(git -C "$dir" status --porcelain)" ]]; then
-    echo "Uncommitted changes found — push before updating:"
-    git -C "$dir" status --short
+    _warn "Uncommitted changes — push before updating"
+    git -C "$dir" status --short | sed 's/^/     /'
+    echo ""
     return 1
   fi
+  _ok "Clean"
 
-  git -C "$dir" fetch --all
+  _step "Fetching from remote..."
+  git -C "$dir" fetch --all --quiet
+  _ok "Fetched"
 
-  if [[ -z "$(git -C "$dir" log HEAD..origin/main --oneline)" ]]; then
+  _step "Checking for new commits..."
+  local incoming
+  incoming="$(git -C "$dir" log HEAD..origin/main --oneline)"
+
+  if [[ -z "$incoming" ]]; then
+    sleep 0.8 && clear
+    echo ""
+    echo -e "  ${cyan}${bold}dotfiles${reset}  ${green}✔ up to date${reset}"
+    echo ""
     return 0
   fi
 
-  git -C "$dir" rebase origin/main && exec zsh
+  local count
+  count="$(echo "$incoming" | wc -l | tr -d ' ')"
+  _ok "$count new commit(s) incoming"
+  echo "$incoming" | sed "s/^/     ${dim}/" | sed "s/$/${reset}/"
+  echo ""
+
+  _step "Rebasing onto origin/main..."
+  if git -C "$dir" rebase origin/main --quiet; then
+    _ok "Done"
+    echo ""
+    exec zsh
+  else
+    _error "Rebase failed — resolve conflicts and run: git rebase --continue"
+    echo ""
+    return 1
+  fi
 }
 
 fetch_dotfiles_updates
