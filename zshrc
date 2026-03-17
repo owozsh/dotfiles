@@ -76,10 +76,6 @@ fetch_dotfiles_updates() {
     git -C "$DIR" fetch --all
     git -C "$DIR" rebase origin/main
   fi
-
-  szsh
 }
 
 fetch_dotfiles_updates
-
-echo heloooooooooooooooo
