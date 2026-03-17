@@ -73,7 +73,6 @@ gacp() {
 
 ping() {
   echo pong
-  echo pong
 }
 
 fetch_dotfiles_updates() {
