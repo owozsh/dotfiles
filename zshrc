@@ -66,3 +66,16 @@ if [ -d "/Users/nuver/Developer/tiendanube" ]; then
   alias nnf="yarn dev:local-api"
 fi
 
+fetch_dotfiles_updates() {
+  DIR="$HOME/Developer/dotfiles"
+  STATUS="$(git -C "$DIR" status --porcelain)"
+
+  if [ -n "$STATUS" ]; then
+    echo 'Push dotfiles updates before updating'
+  else
+    git -C "$DIR" fetch --all
+    git -C "$DIR" rebase origin/main
+  fi
+}
+
+fetch_dotfiles_updates
