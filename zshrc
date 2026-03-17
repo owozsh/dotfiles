@@ -66,6 +66,10 @@ if [ -d "/Users/nuver/Developer/tiendanube" ]; then
   alias nnf="yarn dev:local-api"
 fi
 
+ping() {
+  echo pong
+}
+
 fetch_dotfiles_updates() {
   local dir="$HOME/Developer/dotfiles"
 
@@ -88,8 +92,6 @@ fetch_dotfiles_updates() {
   fi
 
   git -C "$dir" rebase origin/main && exec zsh
-
-  echo helloooooooooooooooo
 }
 
 fetch_dotfiles_updates
