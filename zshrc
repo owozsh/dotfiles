@@ -87,7 +87,6 @@ fetch_dotfiles_updates() {
   git -C "$dir" fetch --all
 
   if [[ -z "$(git -C "$dir" log HEAD..origin/main --oneline)" ]]; then
-    echo "Already up to date."
     return 0
   fi
 
