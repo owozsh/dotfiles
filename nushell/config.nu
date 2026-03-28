@@ -22,8 +22,7 @@ alias cnvim   = nvim ~/.config/nvim/init.lua
 alias ckitty  = nvim ~/.config/kitty/kitty.conf
 alias caero   = nvim ~/.aerospace.toml
 alias cghostty   = nvim ~/.config/ghostty/config
-
-# alias cnu   = nvim ($nu.config-path)
+alias cnu   = nvim ($nu.config-path)
 
 # def snu [] {
 #   source ($nu.config-path)
