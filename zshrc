@@ -1,27 +1,14 @@
-# oh-my-zsh
-
-ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="robbyrussell"
-ZSH_DISABLE_COMPFIX=true
-plugins=(git; zsh-syntax-highlighting)
-
-source $ZSH/oh-my-zsh.sh
-
-# services
-
-eval "$(direnv hook zsh)"
-# eval "$(zellij setup --generate-auto-start zsh)"
+eval "$(starship init zsh)"
+eval "$(mise activate zsh)"
 
 export EDITOR="nvim"
 
-# config aliases
 alias czsh="nvim ~/.zshrc"
 alias szsh="source ~/.zshrc"
 alias cnvim="nvim ~/.config/nvim/init.lua"
 alias ckitty="nvim ~/.config/kitty/kitty.conf"
 alias caero="nvim ~/.aerospace.toml"
 
-# git
 alias ga="git add ."
 alias gcam="git commit -am"
 alias gpull="git pull"
@@ -33,13 +20,11 @@ alias gcz="npm run commit"
 alias gpf="git push --force-with-lease"
 alias grh="git reset --hard"
 
-# other aliases
 alias cdd="cd ~/Developer; clear"
 alias cc='cd ../'
 alias dcu="docker compose up"
 alias pyvsct='python3 ~/Developer/pyvsct/main.py'
 
-# fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND="fd . ."
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -51,7 +36,6 @@ bindkey -s '^f' '^ucd $(ls -p | grep / | cat | fzf)\nclear\n'
 bindkey -s '^n' '^ucd ~/Home/Notes\nclear\nnvim\n'
 # bindkey -s '^e' '^unvim $(ls -p | grep -v / | cat | fzf)\n'
 
-eval "$(mise activate zsh)"
 
 if [ -d "/Users/nuver/Developer/tiendanube" ]; then
   autoload -U +X bashcompinit && bashcompinit
