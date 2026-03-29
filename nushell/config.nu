@@ -2,6 +2,7 @@
 
 $env.EDITOR = "nvim"
 $env.config.buffer_editor = "nvim"
+
 $env.config.keybindings = [
   {
     name: jump_to_project
@@ -24,11 +25,9 @@ alias caero   = nvim ~/.aerospace.toml
 alias cghostty   = nvim ~/.config/ghostty/config
 alias cnu   = nvim ($nu.config-path)
 
-# def snu [] {
-#   source ($nu.config-path)
-# }
-
 # Git
+alias g     = git
+alias glo   = git log
 alias ga    = git add .
 alias gcam  = git commit -am
 alias gpull = git pull
@@ -41,9 +40,9 @@ alias gpf   = git push --force-with-lease
 alias grh   = git reset --hard
 
 # Navigation
-alias cdd = bash -c "cd ~/Developer && clear"
+alias cdd = cd ~/Developer
 
-# Docker / misc
+# Docker
 alias dcu    = docker compose up
 
 

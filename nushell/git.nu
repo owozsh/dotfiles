@@ -33,71 +33,7 @@ def home_abbrev [os_name] {
 }
 
 def path_abbrev_if_needed [apath term_width] {
-  # probably shouldn't do coloring here but since we're coloring
-  # only certain parts, it's kind of tricky to do it in another place
-  let T = (ansi { fg: "#BCBCBC" bg: "#3465A4" }) # truncated
-  let P = (ansi { fg: "#E4E4E4" bg: "#3465A4" }) # path
-  let PB = (ansi { fg: "#E4E4E4" bg: "#3465A4" attr: b }) # path bold
-  let R = (ansi reset)
-  let is_home_in_path = ($env.PWD | str starts-with $nu.home-dir)
-
-  if (($apath | str length) > ($term_width / 2)) {
-    # split out by path separator into tokens
-    # don't use psep here because in home_abbrev we're making them all '/'
-    let splits = ($apath | split row '/')
-
-    let splits_len = ($splits | length)
-    # get all the tokens except the last
-    let tokens = (
-      1..<($splits_len - 1) | each {|x|
-        $"($T)((($splits) | get $x | split chars) | get 0)($R)"
-      }
-    )
-
-    # need an insert command
-    let tokens = ($tokens | prepend $"($T)~")
-
-    # append the last part of the path
-    let tokens = ($tokens | append $"($PB)($splits | last)($R)")
-
-    # collect
-    $tokens | str join $"($T)/"
-  } else {
-    let splits = ($apath | split row '/')
-    let splits_len = ($splits | length)
-    let apath_len = ($apath | str length)
-    if ($splits_len == 2 and $apath_len == 1) {
-      $"/($T)($R)"
-    } else if ($splits_len == 2) {
-      let top_part = ($splits | last)
-      let tokens = $"($PB)($top_part)($R)"
-      $tokens | str join $"($T)"
-    } else if ($splits.0 | is-empty) {
-      let top_part = ($splits | skip | first ($splits_len - 2))
-      let end_part = ($splits | last)
-      let tokens = (
-        $top_part | each {|x|
-          $"($T)/(($x | split chars).0)($R)"
-        }
-      )
-      let tokens = ($tokens | append $"/($PB)($end_part)($R)")
-      $tokens | str join $"($T)"
-    } else {
-      let top_part = ($splits | first ($splits_len - 1))
-      let end_part = ($splits | last)
-      let tokens = (
-        $top_part | each {|x|
-          if $x == '~' {
-            $"($T)(($x | split chars).0)($R)"
-          } else {
-            $"/($T)(($x | split chars).0)($R)"
-          }
-        }
-      )
-      let tokens = ($tokens | append $"/($PB)($end_part)($R)")
-      $tokens | str join $"($T)"
-    }
-  }
+  $apath | split row "/" | last
 }
 
 def get_index_change_count [gs] {
@@ -225,64 +161,40 @@ def get_repo_status [gs os] {
   )
 
   let GIT_BG = "#C4A000"
-  let GIT_FG = "#000000"
-  # let TERM_BG = "#0C0C0C"
-
-  # The multi-color fg colors are good if you just have a black background
+  let GIT_FG = "#93a1a1"
 
   let AHEAD_ICON = (get_icon_by_name AHEAD_ICON)
-  # let A_COLOR = (ansi { fg:"#00ffff" bg: ($GIT_BG) })
-  let A_COLOR = (ansi { fg: ($GIT_FG) bg: ($GIT_BG) })
+  let A_COLOR = (ansi { fg: ($GIT_FG) })
 
   let BEHIND_ICON = (get_icon_by_name BEHIND_ICON)
-  # let B_COLOR = (ansi { fg:"#00ffff" bg: ($GIT_BG) })
-  let B_COLOR = (ansi { fg: ($GIT_FG) bg: ($GIT_BG) })
+  let B_COLOR = (ansi { fg: ($GIT_FG) })
 
   let INDEX_CHANGE_ICON = (get_icon_by_name INDEX_CHANGE_ICON)
-  # let I_COLOR = (ansi { fg:"#00ff00" bg: ($GIT_BG) })
-  let I_COLOR = (ansi { fg: ($GIT_FG) bg: ($GIT_BG) })
+  let I_COLOR = (ansi { fg: ($GIT_FG) })
 
   let CONFLICTED_CHANGE_ICON = (get_icon_by_name CONFLICTED_CHANGE_ICON)
-  # let C_COLOR = (ansi { fg:"#ff0000" bg: ($GIT_BG) })
-  let C_COLOR = (ansi { fg: ($GIT_FG) bg: ($GIT_BG) })
+  let C_COLOR = (ansi { fg: ($GIT_FG) })
 
   let WT_CHANGE_ICON = (get_icon_by_name WT_CHANGE_ICON)
-  # let W_COLOR = (ansi { fg:"#ff00ff" bg: ($GIT_BG) })
-  let W_COLOR = (ansi { fg: ($GIT_FG) bg: ($GIT_BG) })
+  let W_COLOR = (ansi { fg: ($GIT_FG) })
 
   let UNTRACKED_CHANGE_ICON = (get_icon_by_name UNTRACKED_CHANGE_ICON)
-  # let U_COLOR = (ansi { fg:"#ffff00" bg: ($GIT_BG) })
-  let U_COLOR = (ansi { fg: ($GIT_FG) bg: ($GIT_BG) })
+  let U_COLOR = (ansi { fg: ($GIT_FG) })
 
   let NO_CHANGE_ICON = (get_icon_by_name NO_CHANGE_ICON)
-  # let N_COLOR = (ansi { fg:"#00ff00" bg: ($GIT_BG) })
-  let N_COLOR = (ansi { fg: ($GIT_FG) bg: ($GIT_BG) })
+  let N_COLOR = (ansi { fg: ($GIT_FG) })
 
   let HAS_CHANGE_ICON = (get_icon_by_name HAS_CHANGE_ICON)
-  # let H_COLOR = (ansi { fg:"#ff0000" bg: ($GIT_BG) attr: b })
-  let H_COLOR = (ansi { fg: ($GIT_FG) bg: ($GIT_BG) attr: b })
+  let H_COLOR = (ansi { fg: ($GIT_FG) attr: b })
 
   let INSERT_SYMBOL_ICON = (get_icon_by_name INSERT_SYMBOL_ICON)
-  # let S_COLOR = (ansi { fg:"#00ffff" bg: ($GIT_BG) })
-  let S_COLOR = (ansi { fg: ($GIT_FG) bg: ($GIT_BG) })
+  let S_COLOR = (ansi { fg: ($GIT_FG) })
 
   let R = (ansi reset)
 
   let repo_status = (
     $"(
-      if ($ahead_cnt > 0) {$'($A_COLOR)($AHEAD_ICON)($ahead_cnt)($R)'}
-    )(
-      if ($behind_cnt > 0) {$'($B_COLOR)($BEHIND_ICON)($behind_cnt)($R)'}
-    )(
-      if ($index_change_cnt > 0) {$'($I_COLOR)($INDEX_CHANGE_ICON)($index_change_cnt)($R)'}
-    )(
-      if ($conflicted_cnt > 0) {$'($C_COLOR)($CONFLICTED_CHANGE_ICON)($conflicted_cnt)($R)'}
-    )(
-      if ($wt_change_cnt > 0) {$'($W_COLOR)($WT_CHANGE_ICON)($wt_change_cnt)($R)'}
-    )(
-      if ($untracked_cnt > 0) {$'($U_COLOR)($UNTRACKED_CHANGE_ICON)($untracked_cnt)($R)'}
-    )(
-      if $has_no_changes {$'($N_COLOR)($NO_CHANGE_ICON)($R)'} else {$'($H_COLOR)($HAS_CHANGE_ICON)($R)'}
+      if $has_no_changes {''} else {$'($H_COLOR)($HAS_CHANGE_ICON)($R)'}
     )"
   )
 
@@ -293,18 +205,6 @@ def git_left_prompt [gs os] {
   let display_path = (path_abbrev_if_needed (home_abbrev $os.name) (term size).columns)
   let branch_name = (get_branch_name $gs)
   let R = (ansi reset)
-
-  # when reduce is available
-  # echo "one" "two" "three" | reduce { if ($acc | str starts-with 't') { $acc + $it } { $it }}
-
-  # some icons and the unicode char
-  # e0b0
-  # e0b1
-  # e0b2
-  # e0b3
-  # f1d3
-  # f07c or  f115
-  # f015 or  f7db
 
   let GIT_BG = "#C4A000"
   let GIT_FG = "#000000"
@@ -317,13 +217,10 @@ def git_left_prompt [gs os] {
     if (($is_home_in_path) and ($branch_name == "")) {
       [
         $display_path # ~/src/forks/nushell
-        (ansi { fg: "#CED7CF" bg: "#3465A4" }) # color just to color the next space
-        (char space) # space
       ] | str join
     } else {
       [
         $display_path # ~/src/forks/nushell
-        (ansi { fg: "#CED7CF" bg: "#3465A4" }) # color just to color the next space
         (char space) # space
       ] | str join
     }
@@ -332,18 +229,8 @@ def git_left_prompt [gs os] {
   let git_segment = (
     if ($branch_name != "") {
       [
-        (ansi { fg: "#3465A4" bg: "#4E9A06" }) # color
-        (char -u e0b0) # 
-        (char space) # space
-        (ansi { fg: $TERM_BG bg: "#4E9A06" }) # color
-        # (char -u f1d3)                         # 
-        (char -u e0a0) # 
-        (char space) # space
+        (ansi { fg: "#859900" }) # color
         ($branch_name) # main
-        (char space) # space
-        (ansi { fg: "#4E9A06" bg: $GIT_BG }) # color
-        (char -u e0b0) # 
-        (char space) # space
         ($R) # reset color
         $repo_status # repo status
       ] | str join
@@ -355,13 +242,11 @@ def git_left_prompt [gs os] {
     if ($branch_name == "" or $git_right) {
       [
         (ansi { fg: "#3465A4" bg: $TERM_BG }) # color
-        (char -u e0b0) # 
         ($R) # reset color
       ] | str join
     } else {
       [
         (ansi { fg: $GIT_BG bg: $TERM_BG }) # color
-        (char -u e0b0) # 
         ($R) # reset color
       ] | str join
     }
@@ -402,7 +287,6 @@ def git_right_prompt [gs os] {
   let datetime_segment = (
     [
       (ansi { fg: $TIME_BG bg: $TERM_FG })
-      (char -u e0b2) # 
       (ansi { fg: $TERM_FG bg: $TIME_BG })
       (char space)
       (date now | format date '%m/%d/%Y %I:%M:%S%.3f')
@@ -414,7 +298,6 @@ def git_right_prompt [gs os] {
   let time_segment = (
     [
       (ansi { fg: $TIME_BG bg: $TERM_FG })
-      (char -u e0b2) # 
       (ansi { fg: $TERM_FG bg: $TIME_BG })
       (char space)
       (date now | format date '%I:%M:%S %p')
@@ -427,14 +310,12 @@ def git_right_prompt [gs os] {
     if ($branch_name != "") {
       [
         (ansi { fg: $GIT_BG bg: $TERM_BG }) # color
-        (char -u e0b2) # 
         (ansi { fg: $TERM_FG bg: $GIT_BG }) # color
         (char space) # space
         $repo_status # repo status
         (ansi { fg: $TERM_FG bg: $GIT_BG }) # color
         (char space)
         (ansi { fg: "#4E9A06" bg: $GIT_BG }) # color
-        (char -u e0b2) # 
         (ansi { fg: $TERM_BG bg: "#4E9A06" }) # color
         (char space) # space
         # (char -u f1d3)                       # 
@@ -453,7 +334,6 @@ def git_right_prompt [gs os] {
       # (ansi { fg: "#606060" bg: "#191323"})
       (ansi { fg: "#606060" })
       $TERM_BG_DEFAULT
-      (char -u e0b3)
       (char space)
       $env.CMD_DURATION_MS
       (char space)
@@ -477,18 +357,12 @@ def git_right_prompt [gs os] {
       ($R)
     ] | str join
   )
-  # 1. datetime - working
-  # $datetime_segment
-
-  # 2. time only - working
   [
     (
       if $env.LAST_EXIT_CODE != 0 {
         $status_segment
       }
     )
-    $execution_time_segment
-    $time_segment
   ] | str join
 
   # 3. git only - working
