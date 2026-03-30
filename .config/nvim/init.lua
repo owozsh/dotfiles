@@ -658,11 +658,6 @@ require("nvim-treesitter.configs").setup({
 	},
 })
 
--- Colorscheme
-vim.o.termguicolors = true
-vim.o.background = "dark"
-vim.cmd.colorscheme("solarized")
-
 vim.o.scrolloff = 999
 
 -- vim.diagnostic.config({ virtual_text = false, virtual_lines = { current_line = true } })
@@ -682,3 +677,4 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	end,
 })
 
+require('theme')
