@@ -40,6 +40,7 @@ alias gbb   = git checkout -b
 alias gcz   = npm run commit
 alias gpf   = git push --force-with-lease
 alias grh   = git reset --hard
+alias grb   = git rebase
 
 # Navigation
 alias cdd = cd ~/Developer
