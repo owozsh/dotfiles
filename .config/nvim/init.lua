@@ -660,13 +660,6 @@ require("nvim-treesitter.configs").setup({
 
 vim.o.scrolloff = 999
 
--- vim.diagnostic.config({ virtual_text = false, virtual_lines = { current_line = true } })
-
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
-vim.api.nvim_set_hl(0, "Pmenu", { bg = "none" })
-
 vim.keymap.set('n', ']g', ':Gitsigns next_hunk<CR>', { desc = 'Go to next Git hunk' })
 vim.keymap.set('n', '[g', ':Gitsigns prev_hunk<CR>', { desc = 'Go to previous Git hunk' })
 
