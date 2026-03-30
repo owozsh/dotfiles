@@ -30,6 +30,7 @@ alias cnu     = nvim ($nu.config-path)
 alias g     = git
 alias glo   = git log
 alias ga    = git add .
+alias gfa    = git fetch --all
 alias gcam  = git commit -am
 alias gpull = git pull
 alias gpush = git push
