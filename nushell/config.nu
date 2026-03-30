@@ -2,6 +2,7 @@
 
 $env.EDITOR = "nvim"
 $env.config.buffer_editor = "nvim"
+$env.config.edit_mode = 'vi'
 
 $env.config.keybindings = [
   {
@@ -73,10 +74,13 @@ $env.config.show_banner = false
 use ($nu.default-config-dir | path join mise.nu)
 use ($nu.default-config-dir | path join prompt.nu)
 
+source ($nu.default-config-dir | path join tiendanube.nu)
+
 $env.PROMPT_COMMAND = { (prompt).left_prompt }
 $env.PROMPT_COMMAND_RIGHT = ""
 $env.PROMPT_INDICATOR = " "
 
 $env.PATH ++= [
   ($env.HOME | path join '.opencode/bin')
+  ($env.HOME | path join '.cargo/bin')
 ]
