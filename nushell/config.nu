@@ -54,7 +54,9 @@ def gacp [
         print "Usage: gacp <message>"
         return
     }
+
     let message = ($msg | str join " ")
+
     git add .
     git commit -am $message
     git push
@@ -69,9 +71,9 @@ def ping [] {
 $env.config.show_banner = false
 
 use ($nu.default-config-dir | path join mise.nu)
-use ($nu.default-config-dir | path join git.nu) git_prompt
+use ($nu.default-config-dir | path join prompt.nu)
 
-$env.PROMPT_COMMAND = { (git_prompt).left_prompt }
+$env.PROMPT_COMMAND = { (prompt).left_prompt }
 $env.PROMPT_COMMAND_RIGHT = ""
 $env.PROMPT_INDICATOR = " "
 
