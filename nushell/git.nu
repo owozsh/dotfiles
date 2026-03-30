@@ -201,6 +201,41 @@ def get_repo_status [gs os] {
   $repo_status
 }
 
+def git_diff_stat [] {
+  let stat = (git diff --stat | complete)
+
+  if $stat.exit_code != 0 { return "" }
+
+  let result = $stat.stdout
+    | tail -n -1
+    | parse --regex '(\d+) insertions?\(\+\).*?(\d+) deletions?\(-\)'
+    | rename added removed
+
+  if ($result | length) == 0 {
+    return ""
+  }
+
+  let added = $result.added | first
+  let removed = $result.removed | first
+
+  if ($added == "0" and $removed == "0") {
+    return ""
+  }
+
+  [
+    "("
+    (ansi green)
+    "+"
+    $added
+    (char space)
+    (ansi red)
+    "-"
+    $removed
+    (ansi reset)
+    ")"
+  ] | str join
+}
+
 def git_left_prompt [gs os] {
   let display_path = (path_abbrev_if_needed (home_abbrev $os.name) (term size).columns)
   let branch_name = (get_branch_name $gs)
@@ -213,214 +248,76 @@ def git_left_prompt [gs os] {
   let repo_status = (get_repo_status $gs $os)
 
   let is_home_in_path = ($env.PWD | str starts-with $nu.home-dir)
+
   let path_segment = (
-    if (($is_home_in_path) and ($branch_name == "")) {
       [
-        $display_path # ~/src/forks/nushell
+        $display_path
       ] | str join
-    } else {
-      [
-        $display_path # ~/src/forks/nushell
-        (char space) # space
-      ] | str join
-    }
   )
+
+  let modified = $gs | get wt_modified
+  let deleted = $gs | get wt_deleted
+
 
   let git_segment = (
     if ($branch_name != "") {
       [
-        (ansi { fg: "#859900" }) # color
-        ($branch_name) # main
-        ($R) # reset color
-        $repo_status # repo status
+        (ansi cyan)
+        ($branch_name)
+        (ansi reset)
+        (git_diff_stat)
       ] | str join
     }
   )
 
-  let git_right = false
-  let indicator_segment = (
-    if ($branch_name == "" or $git_right) {
-      [
-        (ansi { fg: "#3465A4" bg: $TERM_BG }) # color
-        ($R) # reset color
-      ] | str join
-    } else {
-      [
-        (ansi { fg: $GIT_BG bg: $TERM_BG }) # color
-        ($R) # reset color
-      ] | str join
-    }
+  let dotfiles_dir = $"($env.HOME)/Developer/dotfiles"
+
+  do { git -C $dotfiles_dir fetch origin } | ignore
+
+  let dotfiles_has_updates = (
+    git -C $dotfiles_dir rev-list --count HEAD..origin/HEAD
+    | into int
+    | $in > 0
   )
 
-  # assemble all segments for final prompt printing
+  let dotfiles_has_uncommitted = (
+    git -C $dotfiles_dir status --porcelain
+    | is-not-empty
+  )
+
+  let dotfiles_indicator = (
+      if ($dotfiles_has_uncommitted or $dotfiles_has_updates) {
+        ansi yellow
+      } else {
+        ansi green
+      }
+  )
+
+  let has_error = $env.LAST_EXIT_CODE != 0
+
+  let dotfiles_segment = (
+    [
+      (ansi reset)
+      (if $has_error { ansi red } else { $dotfiles_indicator })
+      (char -u f0627)
+      (ansi reset)
+    ] | str join
+  )
+
   [
+    $dotfiles_segment
     $path_segment
-    (
-      if ($git_right == false) {
-        $git_segment
-      }
-    )
-    $indicator_segment
-  ] | str join
-}
-
-def git_right_prompt [gs os] {
-  # right prompt ideas
-  # 1. just the time on the right
-  # 2. date and time on the right
-  # 3. git information on the right
-  # 4. maybe git and time
-  # 5. would like to get CMD_DURATION_MS going there too when it's implemented
-  # 6. all of the above, chosen by def parameters
-
-  let branch_name = (get_branch_name $gs)
-  let repo_status = (get_repo_status $gs $os)
-  let R = (ansi reset)
-  let TIME_BG = "#D3D7CF"
-  let TERM_FG = "#0C0C0C"
-  let GIT_BG = "#C4A000"
-  let GIT_FG = "#000000"
-  let TERM_BG = "#0C0C0C"
-  let TERM_FG_DEFAULT = "\e[39m"
-  let TERM_BG_DEFAULT = "\e[49m"
-
-  let datetime_segment = (
-    [
-      (ansi { fg: $TIME_BG bg: $TERM_FG })
-      (ansi { fg: $TERM_FG bg: $TIME_BG })
-      (char space)
-      (date now | format date '%m/%d/%Y %I:%M:%S%.3f')
-      (char space)
-      ($R)
-    ] | str join
-  )
-
-  let time_segment = (
-    [
-      (ansi { fg: $TIME_BG bg: $TERM_FG })
-      (ansi { fg: $TERM_FG bg: $TIME_BG })
-      (char space)
-      (date now | format date '%I:%M:%S %p')
-      (char space)
-      ($R)
-    ] | str join
-  )
-
-  let git_segment = (
-    if ($branch_name != "") {
-      [
-        (ansi { fg: $GIT_BG bg: $TERM_BG }) # color
-        (ansi { fg: $TERM_FG bg: $GIT_BG }) # color
-        (char space) # space
-        $repo_status # repo status
-        (ansi { fg: $TERM_FG bg: $GIT_BG }) # color
-        (char space)
-        (ansi { fg: "#4E9A06" bg: $GIT_BG }) # color
-        (ansi { fg: $TERM_BG bg: "#4E9A06" }) # color
-        (char space) # space
-        # (char -u f1d3)                       # 
-        # (char -u e0a0)                       # 
-        (char nf_git_branch) # 
-        (char space) # space
-        $branch_name # main
-        (char space) # space
-        ($R) # reset color
-      ] | str join
-    }
-  )
-
-  let execution_time_segment = (
-    [
-      # (ansi { fg: "#606060" bg: "#191323"})
-      (ansi { fg: "#606060" })
-      $TERM_BG_DEFAULT
-      (char space)
-      $env.CMD_DURATION_MS
-      (char space)
-      ($R)
-    ] | str join
-  )
-
-  let status_segment = (
-    [
-      (
-        if $env.LAST_EXIT_CODE != 0 {
-          (ansi { fg: "#CC0000" })
-        } else {
-          (ansi { fg: "#606060" })
-        }
-      )
-      (char -u e0b3)
-      (char space)
-      $env.LAST_EXIT_CODE
-      (char space)
-      ($R)
-    ] | str join
-  )
-  [
-    (
-      if $env.LAST_EXIT_CODE != 0 {
-        $status_segment
-      }
-    )
-  ] | str join
-
-  # 3. git only - working
-  # $git_segment
-
-  # 4. git + time -> need to fix the transition
-  # [
-  #     $git_segment
-  #     $time_segment
-  # ] | str join
-
-  # 5. fernando wants this on the left prompt
-  # [
-  #     $os_segment
-  #     $time_segment
-  #     $path_segment
-  # ]
+    $git_segment
+  ] | compact | str join (char space)
 }
 
 export def git_prompt [] {
   let gs = (gstat)
   let os = $nu.os-info
   let left_prompt = (git_left_prompt $gs $os)
-  let right_prompt = (git_right_prompt $gs $os)
   let use_ansi = (config use-colors)
 
-  # set the title of the window/tab
-  # Wezterm accepts:
-  # osc0 \x1b]0;
-  # osc1 \x1b]1;
-  # osc2 \x1b]2;
-  # the typical way to set the terminal title is:
-  # osc2 some_string bel aka (char osc)2;($some_string)(char bel) or "\u001b]2;($some_string)\a"
-  # bel is escape \a or \x7 or \u0007
-  # but i've also seen it as
-  # osc2 some_string string_terminator aka (char osc)2;($some_string)(ansi st) or "\u001b];($some_string)\\"
-  # where string_terminator is \
-  # so you might want to play around with these settings a bit
-
-  #let abbrev = ((path_abbrev_if_needed (home_abbrev $os.name) 30) | ansi strip)
-
-  # $"\u001b]0;($abbrev)"
-  # note that this isn't ending properly with a bel or a st, that's
-  # because it makes the string echo to the screen as an empty line
-
-  # turning off now since a similar thing is built into nushell + it breaks kitty
-  #$"(ansi osc)2;($abbrev)"
-
-  # return in record literal syntax to be used kind of like a tuple
-  # so we don't have to run this script more than once per prompt
   {
     left_prompt: (if $use_ansi { $left_prompt } else { $left_prompt | ansi strip })
-    right_prompt: (if $use_ansi { $right_prompt } else { $right_prompt | ansi strip })
   }
-  #
-  # in the config.nu you would do something like
-  # use "c:\some\path\to\nu_scripts\prompt\oh-my.nu" git_prompt
-  # $env.PROMPT_COMMAND = { (git_prompt).left_prompt }
-  # $env.PROMPT_COMMAND_RIGHT = { (git_prompt).right_prompt }
-  # $env.PROMPT_INDICATOR = " "
 }
