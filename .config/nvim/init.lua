@@ -500,6 +500,7 @@ require("lazy").setup({
 				})
 			end,
 		},
+    { "rose-pine/neovim", name = "rose-pine" },
 		{
 			"maxmx03/solarized.nvim",
 			lazy = false,
