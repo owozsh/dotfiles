@@ -91,33 +91,12 @@ def left_prompt [gs os] {
 
   let dotfiles_dir = $"($env.HOME)/Developer/dotfiles"
 
-  do { git -C $dotfiles_dir fetch origin } | ignore
-
-  let dotfiles_has_updates = (
-    git -C $dotfiles_dir rev-list --count HEAD..origin/HEAD
-    | into int
-    | $in > 0
-  )
-
-  let dotfiles_has_uncommitted = (
-    git -C $dotfiles_dir status --porcelain
-    | is-not-empty
-  )
-
-  let dotfiles_indicator = (
-      if ($dotfiles_has_uncommitted or $dotfiles_has_updates) {
-        ansi yellow
-      } else {
-        ansi green
-      }
-  )
-
   let has_error = $env.LAST_EXIT_CODE != 0
 
   let dotfiles_segment = (
     [
       (ansi reset)
-      (if $has_error { ansi red } else { $dotfiles_indicator })
+      (if $has_error { ansi red } else { ansi green })
       (char -u f0627)
       (ansi reset)
     ] | str join
