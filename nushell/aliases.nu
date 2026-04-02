@@ -1,3 +1,5 @@
+alias lsa = ls -a
+
 # Config editing
 alias cnvim    = nvim ~/.config/nvim/init.lua
 alias ckitty   = nvim ~/.config/kitty/kitty.conf
