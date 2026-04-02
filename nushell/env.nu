@@ -23,7 +23,6 @@ $env.config.keybindings = [
   }
 ]
 
-
 use ($nu.default-config-dir | path join prompt.nu)
 $env.PROMPT_COMMAND = { (prompt).left_prompt }
 $env.PROMPT_COMMAND_RIGHT = ""
