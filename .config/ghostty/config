@@ -1,9 +1,10 @@
 font-family = CommitMonoPro
-font-size = 16
+font-size = 20
 window-padding-x = 16
 window-padding-y = 16
 macos-option-as-alt = true
-theme = Rose Pine
+theme = Flexoki Dark
 macos-titlebar-style = hidden
 background-opacity = 0.9
 command = /opt/homebrew/bin/nu
+custom-shader = ~/retro-terminal.glsl

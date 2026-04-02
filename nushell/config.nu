@@ -70,18 +70,10 @@ def ping [] {
 
 # ── Run on shell start ────────────────────────────────────────────────────────
 
-$env.config.show_banner = false
-
 use ($nu.default-config-dir | path join mise.nu)
-use ($nu.default-config-dir | path join prompt.nu)
 
+source ($nu.cache-dir          | path join carapace.nu )
 source ($nu.default-config-dir | path join tiendanube.nu)
+source ($nu.default-config-dir | path join fdns.nu)
+source ($nu.default-config-dir | path join hosts.nu)
 
-$env.PROMPT_COMMAND = { (prompt).left_prompt }
-$env.PROMPT_COMMAND_RIGHT = ""
-$env.PROMPT_INDICATOR = " "
-
-$env.PATH ++= [
-  ($env.HOME | path join '.opencode/bin')
-  ($env.HOME | path join '.cargo/bin')
-]
