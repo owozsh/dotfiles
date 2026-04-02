@@ -1,10 +1,12 @@
-font-family = CommitMonoPro
+font-family = Input
 font-size = 20
 window-padding-x = 16
 window-padding-y = 16
 macos-option-as-alt = true
 theme = Flexoki Dark
 macos-titlebar-style = hidden
-background-opacity = 0.9
+# background-opacity = 0.9
 command = /opt/homebrew/bin/nu
 custom-shader = ~/.config/ghostty/retro-terminal.glsl
+window-save-state = always
+window-padding-balance = true
