@@ -7,4 +7,4 @@ theme = Flexoki Dark
 macos-titlebar-style = hidden
 background-opacity = 0.9
 command = /opt/homebrew/bin/nu
-custom-shader = ~/retro-terminal.glsl
+custom-shader = ~/.config/ghostty/retro-terminal.glsl
