@@ -1,0 +1,33 @@
+[language-server.expert]
+command = "expert"
+args = ["--stdio"]
+
+[[language]]
+name = "elixir"
+language-servers = ["expert"]
+auto-format = true
+
+[[language]]
+name = "heex"
+language-servers = ["expert"]
+auto-format = true
+
+[language-server.gopls]
+command = "gopls"
+args = ["-logfile=/tmp/gopls.log",  "serve"]
+
+[language-server.gopls.config]
+"ui.diagnostic.staticcheck" = true
+
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
+
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
+
+[[language]]
+name = "python"
+language-servers = ["ruff", "pyright"]
+auto-format = true

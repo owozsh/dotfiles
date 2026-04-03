@@ -4,6 +4,7 @@ $env.PATH ++= [
   ($env.HOME | path join '/opt/homebrew/bin')
   ($env.HOME | path join '/usr/local/bin')
   ($env.HOME | path join '.opencode/bin')
+  ($env.HOME | path join '.local/bin')
   ($env.HOME | path join '.cargo/bin')
 ]
 

@@ -1,0 +1,35 @@
+theme = 'flexoki_dark'
+
+[editor.lsp]
+display-messages = true
+
+[editor]
+line-number = "relative"
+auto-format = true
+
+[editor.indent-guides]
+render = true
+character = "."
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[keys.normal]
+C-p = "file_picker"
+z = { z = ":wq", q = ":q!" }
+"\\" = { s = ":w", r = ":config-reload", e = [
+  ':sh rm -f /tmp/unique-file',
+  ':insert-output yazi %{buffer_name} --chooser-file=/tmp/unique-file',
+  ':insert-output echo "\x1b[?1049h\x1b[?2004h" > /dev/tty',
+  ':open %sh{cat /tmp/unique-file}',
+  ':redraw',
+] }
+A-S-j = "@xyp;"
+A-S-k = "@xykp;"
+A-j = "@xdp;"
+A-k = "@xdkkp;"
+C-n = "@C"
+S-c = "@vglc"
+esc = "@,;"

@@ -3,6 +3,9 @@
 rm -rf ~/.config/nvim
 ln -sf ~/Developer/dotfiles/nvim ~/.config/nvim
 
+rm -rf ~/.config/helix
+ln -sf ~/Developer/dotfiles/helix ~/.config/helix
+
 rm -rf ~/.config/ghostty
 ln -sf ~/Developer/dotfiles/ghostty ~/.config/ghostty
 
