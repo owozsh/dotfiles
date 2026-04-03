@@ -17,8 +17,18 @@ normal = "block"
 select = "underline"
 
 [keys.normal]
-C-p = "file_picker"
-z = { z = ":wq", q = ":q!" }
+C-p   = "file_picker"
+A-S-j = "@xyp;"
+A-S-k = "@xykp;"
+A-j   = "@xdp;"
+A-k   = "@xdkkp;"
+A-c   = "copy_selection_on_next_line"
+C-n   = "@v*n"
+S-c   = "@vglc"
+esc   = "@,;"
+ret   = "@o<esc>"
+S-ret = "@ko<esc>"
+z     = { z = ":wq", q = ":q!" }
 "\\" = { s = ":w", r = ":config-reload", e = [
   ':sh rm -f /tmp/unique-file',
   ':insert-output yazi %{buffer_name} --chooser-file=/tmp/unique-file',
@@ -26,10 +36,3 @@ z = { z = ":wq", q = ":q!" }
   ':open %sh{cat /tmp/unique-file}',
   ':redraw',
 ] }
-A-S-j = "@xyp;"
-A-S-k = "@xykp;"
-A-j = "@xdp;"
-A-k = "@xdkkp;"
-C-n = "@C"
-S-c = "@vglc"
-esc = "@,;"
