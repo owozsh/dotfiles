@@ -1,4 +1,4 @@
-theme = 'flexoki_dark'
+theme = 'flexoki'
 
 [editor.lsp]
 display-messages = true
