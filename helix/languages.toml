@@ -31,3 +31,10 @@ args = ["--stdio"]
 name = "python"
 language-servers = ["ruff", "pyright"]
 auto-format = true
+
+[language-server.phpantom]
+command = "phpantom"
+
+[[language]]
+name = "php"
+language-servers = ["phpantom"]
