@@ -8,7 +8,7 @@ alias cnu      = hx   ($nu.config-path)
 
 # Git
 alias g     = git
-alias glo   = git log
+alias glo   = git log --oneline
 alias ga    = git add .
 alias gfa   = git fetch --all
 alias gcam  = git commit -am

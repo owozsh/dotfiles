@@ -1,4 +1,4 @@
-theme = 'flexoki'
+theme = 'theme'
 
 [editor.lsp]
 display-messages = true
@@ -30,7 +30,7 @@ esc   = "@,;"
 ret   = "@o<esc>"
 S-ret = "@ko<esc>"
 z     = { z = ":wq", q = ":q!" }
-"\\" = { s = ":w", r = ":config-reload", e = [
+"\\"  = { s = ":w", r = ":config-reload", e = [
   ':sh rm -f /tmp/unique-file',
   ':insert-output yazi %{buffer_name} --chooser-file=/tmp/unique-file',
   ':insert-output echo "\x1b[?1049h\x1b[?2004h" > /dev/tty',
