@@ -2,15 +2,22 @@
 command = "expert"
 args = ["--stdio"]
 
+[language-server.tailwindcss-ls]
+command = "tailwindcss-language-server"
+args = ["--stdio"]
+
 [[language]]
 name = "elixir"
-language-servers = ["expert"]
+language-servers = ["expert", "tailwindcss-ls"]
 auto-format = true
 
 [[language]]
 name = "heex"
-language-servers = ["expert"]
+language-servers = ["expert", "tailwindcss-ls"]
 auto-format = true
+
+[language-server.tailwindcss-ls.config.tailwindCSS]
+includeLanguages = { "elixir" = "html", "phoenix-heex" = "html", "*.heex" = "html" }
 
 [language-server.gopls]
 command = "gopls"
@@ -38,3 +45,33 @@ command = "phpantom"
 [[language]]
 name = "php"
 language-servers = ["phpantom"]
+
+[[language]]
+name = "html"
+language-servers = [ "vscode-html-language-server", "tailwindcss-ls" ]
+
+[[language]]
+name = "css"
+language-servers = [ "vscode-css-language-server", "tailwindcss-ls" ]
+
+[[language]]
+name = "jsx"
+language-servers = [ "typescript-language-server", "tailwindcss-ls" ]
+
+[[language]]
+name = "tsx"
+language-servers = [ "typescript-language-server", "tailwindcss-ls" ]
+
+[[language]]
+name = "svelte"
+language-servers = [ "svelteserver", "tailwindcss-ls" ]
+
+[language-server.astro-ls]
+command = "astro-ls"
+args = ["--stdio"]
+config = {typescript = {tsdk = "/Users/owozsh/.local/share/mise/installs/node/25.8.0/lib/node_modules/typescript/lib"}, environment = "node"}
+
+[[language]]
+name = "astro"
+auto-format = true
+language-servers = [ "astro-ls", "tailwindcss-ls" ]

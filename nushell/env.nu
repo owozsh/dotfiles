@@ -11,6 +11,14 @@ $env.PATH ++= [
 $env.EDITOR = "nvim"
 $env.config.buffer_editor = "nvim"
 
+def ctrln [] {
+  let note = eza ($env.HOME)/Notes | fzf --reverse --bind enter:accept-or-print-query | split row . | first
+
+  if (($note | str length) > 0) {
+    hx ($env.HOME)/Notes/($note).md; clear
+  }
+}
+
 $env.config.keybindings = [
   {
     name: jump_to_project
@@ -20,6 +28,16 @@ $env.config.keybindings = [
     event: {
       send: executehostcommand
       cmd: "cd ($env.HOME)/Developer/(eza ($env.HOME)/Developer| fzf --reverse --preview 'eza -1 --icons --color=always ~/Developer/{}'); clear"
+    }
+  }
+  {
+    name: jump_to_project
+    modifier: control
+    keycode: char_n
+    mode: [emacs vi_normal vi_insert]
+    event: {
+      send: executehostcommand
+      cmd: "ctrln"
     }
   }
 ]
