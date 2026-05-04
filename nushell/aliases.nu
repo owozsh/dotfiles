@@ -21,6 +21,7 @@ alias gcz   = npm run commit
 alias gpf   = git push --force-with-lease
 alias grh   = git reset --hard
 alias grb   = git rebase
+alias gcp   = git cherry-pick
 
 # Navigation
 alias cdd = cd ~/Developer
