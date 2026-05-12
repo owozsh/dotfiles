@@ -38,6 +38,9 @@ vim.pack.add({
 	-- LSP setup
 	"https://github.com/neovim/nvim-lspconfig",
 	"https://github.com/stevearc/conform.nvim",
+	"https://github.com/nvim-treesitter/nvim-treesitter",
+	"https://github.com/windwp/nvim-ts-autotag",
+	"https://github.com/rachartier/tiny-inline-diagnostic.nvim",
 })
 
 -- setup plugins
@@ -240,4 +243,38 @@ vim.api.nvim_create_autocmd("LspAttach", {
 require("mason").setup()
 require("mason-lspconfig").setup({
 	ensure_installed = { "lua_ls", "gopls", "pyright", "eslint" },
+})
+
+require("nvim-ts-autotag").setup({
+	opts = {
+		enable_close = true,
+		enable_rename = true,
+		enable_close_on_slash = false,
+	},
+})
+
+require("tiny-inline-diagnostic").setup()
+vim.diagnostic.config({ virtual_text = false })
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*",
+	callback = function(args)
+		require("conform").format({ bufnr = args.buf })
+	end,
+})
+
+require("conform").setup({
+	formatters_by_ft = {
+		go = { "goimports", "gofumpt" },
+		lua = { "stylua" },
+		typescript = { "oxfmt", "oxlint" },
+		typescriptreact = { "oxfmt", "oxlint" },
+		javascript = { "oxfmt", "oxlint" },
+		javascriptreact = { "oxfmt", "oxlint" },
+		rust = { "rustfmt" },
+	},
+	format_on_save = {
+		timeout_ms = 500,
+		Isp_fallback = true,
+	},
 })
