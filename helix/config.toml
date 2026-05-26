@@ -22,8 +22,21 @@ select = "underline"
 C-p   = "file_picker"
 A-S-j = "@xyp;"
 A-S-k = "@xykp;"
-A-j   = "@xdp;"
-A-k   = "@xdkkp;"
+A-j = [
+  "extend_to_line_bounds",
+  "delete_selection",
+  "paste_after",
+  "select_mode",
+  "goto_line_start",
+  "normal_mode",
+]
+A-k = [
+  "extend_to_line_bounds",
+  "delete_selection",
+  "move_line_up",
+  "paste_before",
+  "flip_selections",
+]
 A-c   = "copy_selection_on_next_line"
 C-n   = "@v*n"
 S-c   = "@vglc"
