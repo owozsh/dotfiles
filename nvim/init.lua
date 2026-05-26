@@ -243,6 +243,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 require("mason").setup()
 require("mason-lspconfig").setup({
 	ensure_installed = { "lua_ls", "gopls", "pyright", "eslint" },
+	automatic_enable = true,
 })
 
 require("nvim-ts-autotag").setup({
@@ -267,14 +268,14 @@ require("conform").setup({
 	formatters_by_ft = {
 		go = { "goimports", "gofumpt" },
 		lua = { "stylua" },
-		typescript = { "oxfmt", "oxlint" },
-		typescriptreact = { "oxfmt", "oxlint" },
-		javascript = { "oxfmt", "oxlint" },
-		javascriptreact = { "oxfmt", "oxlint" },
+		typescript = { "oxfmt" },
+		typescriptreact = { "vtsls" },
+		javascript = { "oxfmt" },
+		javascriptreact = { "vtsls" },
 		rust = { "rustfmt" },
 	},
 	format_on_save = {
 		timeout_ms = 500,
-		Isp_fallback = true,
+		lsp_fallback = true,
 	},
 })
