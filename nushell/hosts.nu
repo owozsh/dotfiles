@@ -6,7 +6,7 @@ def hosts [...args] {
       $l1 | sudo tee -a /etc/hosts | ignore
       $l2 | sudo tee -a /etc/hosts | ignore
     },
-    "edit" => (sudo nvim /etc/hosts)
+    "edit" => (sudo hx /etc/hosts)
   }
 }
 

@@ -8,8 +8,8 @@ $env.PATH ++= [
   ($env.HOME | path join '.cargo/bin')
 ]
 
-$env.EDITOR = "nvim"
-$env.config.buffer_editor = "nvim"
+$env.EDITOR = "hx"
+$env.config.buffer_editor = "hx"
 
 def ctrln [] {
   let note = eza ($env.HOME)/Notes | fzf --reverse --bind enter:accept-or-print-query | split row . | first

@@ -1,10 +1,10 @@
 alias lsa = ls -a
 
 # Config editing
-alias cnvim    = nvim ~/.config/nvim/init.lua
-alias chx      = nvim ~/.config/helix/config.toml
-alias cghostty = nvim ~/.config/ghostty/config
-alias cnu      = nvim ($nu.config-path)
+alias cnvim    = hx ~/.config/nvim/init.lua
+alias chx      = hx ~/.config/helix/config.toml
+alias cghostty = hx ~/.config/ghostty/config
+alias cnu      = hx ($nu.config-path)
 
 # Git
 alias g     = git
