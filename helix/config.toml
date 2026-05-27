@@ -22,6 +22,8 @@ select = "underline"
 C-p   = "file_picker"
 A-S-j = "@xyp;"
 A-S-k = "@xykp;"
+A-h   = "@gp"
+A-l   = "@gn"
 A-j = [
   "extend_to_line_bounds",
   "delete_selection",
