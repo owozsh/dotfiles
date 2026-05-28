@@ -1,3 +1,69 @@
+[language-server.vtsls]
+command = "mise"
+args = ["x", "node@24", "--", "vtsls", "--stdio"]
+
+[language-server.vtsls.config]
+typescript.tsserver.maxTsServerMemory = 8192
+javascript.tsserver.maxTsServerMemory = 8192
+
+[language-server.eslint]
+command = "vscode-eslint-language-server"
+args = ["--stdio"]
+
+[language-server.eslint.config]
+validate = "on"
+run = "onType"
+quiet = false
+nodePath = ""
+rulesCustomizations = []
+format = { enable = true }
+problems = { shortenToSingleLine = false }
+experimental = { useFlatConfig = false }
+codeActionsOnSave = { mode = "all", "source.fixAll.eslint" = true }
+
+[language-server.eslint.config.codeAction]
+disableRuleComment = { enable = true, location = "separateLine" }
+showDocumentation = { enable = true }
+
+[language-server.eslint.config.workingDirectory]
+pattern = "**/tsconfig.json"
+
+[language-server.oxlint]
+command = "mise"
+args = ["exec", "node@24", "--", "oxlint", "--lsp"]
+
+[language-server.oxfmt]
+command = "mise"
+args = ["exec", "node@24", "--", "oxfmt", "--lsp"]
+
+[[language]]
+name = "typescript"
+language-id = "typescript"
+language-servers = ["vtsls", "eslint"]
+formatter = { command = "eslint_d", args = ["--fix-to-stdout", "--stdin", "--stdin-filename", "%{buffer_name}"] }
+auto-format = true
+
+[[language]]
+name = "tsx"
+language-id = "typescriptreact"
+language-servers = ["vtsls", "eslint"]
+formatter = { command = "eslint_d", args = ["--fix-to-stdout", "--stdin", "--stdin-filename", "%{buffer_name}"] }
+auto-format = true
+
+[[language]]
+name = "javascript"
+language-id = "javascript"
+language-servers = ["vtsls", "eslint"]
+formatter = { command = "eslint_d", args = ["--fix-to-stdout", "--stdin", "--stdin-filename", "%{buffer_name}"] }
+auto-format = true
+
+[[language]]
+name = "jsx"
+language-id = "javascriptreact"
+language-servers = ["vtsls", "eslint"]
+formatter = { command = "eslint_d", args = ["--fix-to-stdout", "--stdin", "--stdin-filename", "%{buffer_name}"] }
+auto-format = true
+
 [language-server.expert]
 command = "expert"
 args = ["--stdio"]
@@ -57,58 +123,6 @@ language-servers = [ "vscode-html-language-server", "tailwindcss-ls" ]
 name = "css"
 language-servers = [ "vscode-css-language-server", "tailwindcss-ls" ]
 
-[language-server.vtsls]
-command = "mise"
-args = ["x", "node@24", "--", "vtsls", "--stdio"]
-
-[language-server.eslint]
-command = "/Users/nuver/Library/Application Support/Zed/node/node-v24.11.0-darwin-arm64/bin/node"
-args = ["--max-old-space-size=8192", "/Users/nuver/Library/Application Support/Zed/languages/eslint/vscode-eslint-3.0.24/vscode-eslint/server/out/eslintServer.js", "--stdio"]
-
-[language-server.vtsls.config]
-typescript.tsserver.maxTsServerMemory = 8092
-javascript.tsserver.maxTsServerMemory = 8092
-
-[language-server.eslint.config]
-validate = "on"
-rulesCustomizations = []
-run = "onType"
-nodePath = "null"
-problems = {}
-codeActionsOnSave = { mode = "all", "source.fixAll.eslint" = true }
-codeAction = { disableRuleComment = { enable = true, location = "separateLine" } }
-showDocumentation = { enable = true }
-
-[language-server.eslint.config.workingDirectory]
-mode = "auto"
-
-[language-server.oxlint]
-command = "mise"
-args = ["exec", "node@24", "--", "oxlint", "--lsp"]
-
-[language-server.oxfmt]
-command = "mise"
-args = ["exec", "node@24", "--", "oxfmt", "--lsp"]
-
-[[language]]
-name = "typescript"
-language-servers = ["vtsls", "eslint"]
-auto-format = true
-
-[[language]]
-name = "tsx"
-language-servers = ["vtsls", "eslint"]
-auto-format = true
-
-[[language]]
-name = "javascript"
-language-servers = ["vtsls", "eslint"]
-auto-format = true
-
-[[language]]
-name = "jsx"
-language-servers = ["vtsls", "eslint"]
-auto-format = true
 
 [language-server.astro-ls]
 command = "astro-ls"
