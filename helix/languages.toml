@@ -133,3 +133,7 @@ config = {typescript = {tsdk = "/Users/owozsh/.local/share/mise/installs/node/25
 name = "astro"
 auto-format = true
 language-servers = [ "astro-ls", "tailwindcss-ls" ]
+
+[[language]]
+name = "markdown"
+comment-tokens = ["-", "+", "*", "1.", ">", "- [ ]"]

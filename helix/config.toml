@@ -7,7 +7,7 @@ display-messages = true
 line-number = "relative"
 auto-format = true
 bufferline = 'always'
-# scrolloff = 999
+scrolloff = 999
 
 [editor.indent-guides]
 render = true
