@@ -6,7 +6,7 @@ display-messages = true
 [editor]
 line-number = "relative"
 auto-format = true
-bufferline = 'always'
+bufferline = 'multiple'
 scrolloff = 999
 true-color = true
 end-of-line-diagnostics = "hint"
