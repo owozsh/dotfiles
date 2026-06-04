@@ -97,6 +97,7 @@ def left_prompt [gs os] {
     [
       (ansi reset)
       (if $has_error { ansi red } else { ansi green })
+      (char space)
       (char -u f0627)
       (ansi reset)
     ] | str join
@@ -106,6 +107,8 @@ def left_prompt [gs os] {
     $dotfiles_segment
     $path_segment
     $git_segment
+    ("\n")
+    (">")
   ] | compact | str join (char space)
 }
 
