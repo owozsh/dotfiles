@@ -28,6 +28,8 @@ select = "underline"
 A-w = ":buffer-close"
 A-x = "extend_to_line_bounds"
 X = "select_line_above"
+V = "@vx"
+G = "@ge"
 C-p   = "file_picker"
 A-S-j = "@xyp;"
 A-S-k = "@xykp;"
@@ -66,3 +68,4 @@ z     = { z = ":wq", q = ":q!" }
 [keys.select]
 A-x = "extend_to_line_bounds"
 X = "select_line_above"
+G = "@gegl"
