@@ -27,6 +27,7 @@ select = "underline"
 [keys.normal]
 A-w = ":buffer-close"
 A-x = "extend_to_line_bounds"
+A-d = "@xd"
 X = "select_line_above"
 V = "@vx"
 G = "@ge"
