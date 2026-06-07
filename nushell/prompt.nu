@@ -49,7 +49,7 @@ def git_diff_stat [] {
   }
 
   [
-    "("
+    # "("
     (ansi green)
     "+"
     $added
@@ -58,7 +58,7 @@ def git_diff_stat [] {
     "-"
     $removed
     (ansi reset)
-    ")"
+    # ")"
   ] | str join
 }
 
@@ -76,15 +76,14 @@ def left_prompt [gs os] {
 
   let modified = $gs | get wt_modified
   let deleted = $gs | get wt_deleted
-
+  let has_changes = $modified > 0 or $deleted > 0
 
   let git_segment = (
     if ($branch_name != "") {
       [
-        (ansi cyan)
+        (ansi green)
         ($branch_name)
         (ansi reset)
-        (git_diff_stat)
       ] | str join
     }
   )
@@ -96,20 +95,28 @@ def left_prompt [gs os] {
   let dotfiles_segment = (
     [
       (ansi reset)
-      (if $has_error { ansi red } else { ansi green })
-      (char space)
-      (char -u f0627)
+      (ansi red)
+      ("::")
       (ansi reset)
     ] | str join
   )
 
-  [
-    $dotfiles_segment
-    $path_segment
-    $git_segment
-    ("\n")
-    (">")
-  ] | compact | str join (char space)
+  if ($display_path == "~") {
+    [
+      "\n "
+      $dotfiles_segment
+    ] | compact | str join
+  } else {
+    [
+      ("\n ")
+      (ansi reset)
+      $path_segment
+      (char space)
+      $git_segment
+      ("\n ")
+      $dotfiles_segment
+    ] | compact | str join
+  }
 }
 
 export def main [] {
