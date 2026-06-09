@@ -103,17 +103,15 @@ def left_prompt [gs os] {
 
   if ($display_path == "~") {
     [
-      "\n "
       $dotfiles_segment
     ] | compact | str join
   } else {
     [
-      ("\n ")
       (ansi reset)
       $path_segment
       (char space)
       $git_segment
-      ("\n ")
+      ("\n")
       $dotfiles_segment
     ] | compact | str join
   }
