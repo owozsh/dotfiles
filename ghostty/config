@@ -1,19 +1,17 @@
 theme = Gruvbox Dark Hard
+
 font-family = Essential PragmataPro
 font-family = Input
 font-size = 16
-macos-option-as-alt = true
-background = #383838
-background-opacity = 0.8
-background-blur = macos-glass-regular
-# macos-titlebar-style = hidden
-macos-titlebar-style = tabs
-# window-padding-y = 20
-# window-padding-x = 20
-command = /opt/homebrew/bin/nu
-custom-shader = ~/.config/ghostty/retro-terminal.glsl
+
 unfocused-split-opacity = 1
+
 split-divider-color = #000000
+
 macos-icon-screen-color = #000000
 macos-icon-ghost-color = #FFFFFF
 macos-icon = custom-style
+macos-option-as-alt = left
+macos-titlebar-style = tabs
+
+command = /opt/homebrew/bin/nu

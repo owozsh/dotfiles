@@ -70,6 +70,7 @@ def left_prompt [gs os] {
 
   let path_segment = (
       [
+        (ansi reset)
         $display_path
       ] | str join
   )
@@ -81,7 +82,7 @@ def left_prompt [gs os] {
   let git_segment = (
     if ($branch_name != "") {
       [
-        (ansi green)
+        (if $has_changes { ansi yellow } else { ansi cyan })
         ($branch_name)
         (ansi reset)
       ] | str join
@@ -101,20 +102,10 @@ def left_prompt [gs os] {
     ] | str join
   )
 
-  if ($display_path == "~") {
-    [
-      $dotfiles_segment
-    ] | compact | str join
-  } else {
-    [
-      (ansi reset)
-      $path_segment
-      (char space)
-      $git_segment
-      ("\n")
-      $dotfiles_segment
-    ] | compact | str join
-  }
+  [
+    $path_segment
+    $git_segment
+  ] | compact | str join " "
 }
 
 export def main [] {

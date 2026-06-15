@@ -1,15 +1,16 @@
 theme = 'theme'
 
-[editor.lsp]
-display-messages = true
-
 [editor]
+cursorline = true
 line-number = "relative"
 auto-format = true
 bufferline = 'multiple'
 scrolloff = 999
 true-color = true
 end-of-line-diagnostics = "hint"
+
+[editor.lsp]
+display-messages = true
 
 [editor.indent-guides]
 render = true
