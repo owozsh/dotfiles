@@ -1,4 +1,4 @@
-inherits = "gruvbox_dark_hard"
+inherits = "solarized_light"
 
 "ui.background" = { }
 "ui.bufferline.background" = { }

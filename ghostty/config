@@ -1,8 +1,8 @@
-theme = Gruvbox Dark Hard
+theme = iTerm2 Solarized Light
 
 font-family = Essential PragmataPro
 font-family = Input
-font-size = 16
+font-size = 14
 
 unfocused-split-opacity = 1
 
