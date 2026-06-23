@@ -1,4 +1,4 @@
-inherits = "solarized_light"
+inherits = "flexoki_dark"
 
 "ui.background" = { }
 "ui.bufferline.background" = { }
