@@ -12,7 +12,6 @@ end-of-line-diagnostics = "hint"
 [editor.soft-wrap]
 enable = true
 
-
 [editor.lsp]
 display-messages = true
 
@@ -22,7 +21,6 @@ character = "."
 
 [editor.inline-diagnostics]
 cursor-line = "error"
-other-lines = "disable"
 
 [editor.cursor-shape]
 insert = "bar"
