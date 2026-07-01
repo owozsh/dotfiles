@@ -9,6 +9,10 @@ scrolloff = 999
 true-color = true
 end-of-line-diagnostics = "hint"
 
+[editor.soft-wrap]
+enable = true
+
+
 [editor.lsp]
 display-messages = true
 

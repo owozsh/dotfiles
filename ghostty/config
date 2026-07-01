@@ -1,7 +1,6 @@
 theme = Flexoki Dark
 
-font-family = Essential PragmataPro
-font-family = Input
+font-family = SF Mono
 font-size = 16
 
 unfocused-split-opacity = 1
