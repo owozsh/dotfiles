@@ -8,6 +8,7 @@ bufferline = 'multiple'
 scrolloff = 999
 true-color = true
 end-of-line-diagnostics = "hint"
+mouse = false
 
 [editor.soft-wrap]
 enable = true
