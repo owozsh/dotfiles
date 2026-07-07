@@ -11,6 +11,9 @@ macos-icon-screen-color = #000000
 macos-icon-ghost-color = #FFFFFF
 macos-icon = custom-style
 macos-option-as-alt = left
-# macos-titlebar-style = tabs
+macos-titlebar-style = hidden
+
+window-padding-x = 16
+window-padding-y = 16
 
 command = /opt/homebrew/bin/nu
