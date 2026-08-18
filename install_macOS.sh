@@ -1,0 +1,10 @@
+#!/bin/bash
+
+rm -rf ~/.config/helix
+ln -sf ~/Developer/dotfiles/helix ~/.config/helix
+
+rm -rf ~/.config/ghostty
+ln -sf ~/Developer/dotfiles/ghostty ~/.config/ghostty
+
+rm -rf ~/Library/Application\ Support/nushell
+ln -sf ~/Developer/dotfiles/nushell ~/Library/Application\ Support/nushell

@@ -1,0 +1,76 @@
+theme = 'theme'
+
+[editor]
+cursorline = true
+line-number = "relative"
+auto-format = true
+bufferline = 'multiple'
+scrolloff = 999
+true-color = true
+end-of-line-diagnostics = "hint"
+mouse = false
+
+[editor.soft-wrap]
+enable = true
+
+[editor.lsp]
+display-messages = true
+
+[editor.indent-guides]
+render = true
+character = "."
+
+[editor.inline-diagnostics]
+cursor-line = "error"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[keys.normal]
+A-w = ":buffer-close"
+A-x = "extend_to_line_bounds"
+A-d = "@xd"
+X = "select_line_above"
+V = "@vx"
+G = "@ge"
+C-p   = "file_picker"
+A-S-j = "@xyp;"
+A-S-k = "@xykp;"
+A-h   = "@gp"
+A-l   = "@gn"
+A-j = [
+  "extend_to_line_bounds",
+  "delete_selection",
+  "paste_after",
+  "select_mode",
+  "goto_line_start",
+  "normal_mode",
+]
+A-k = [
+  "extend_to_line_bounds",
+  "delete_selection",
+  "move_line_up",
+  "paste_before",
+  "flip_selections",
+]
+A-c   = "copy_selection_on_next_line"
+C-n   = "@v*n"
+S-c   = "@vglc"
+esc   = "@,;"
+ret   = "@o<esc>"
+S-ret = "@ko<esc>"
+z     = { z = ":wq", q = ":q!" }
+"\\"  = { s = ":w", r = ":config-reload", e = [
+  ':sh rm -f /tmp/unique-file',
+  ':insert-output yazi %{buffer_name} --chooser-file=/tmp/unique-file',
+  ':insert-output echo "\x1b[?1049h\x1b[?2004h" > /dev/tty',
+  ':open %sh{cat /tmp/unique-file}',
+  ':redraw',
+] }
+
+[keys.select]
+A-x = "extend_to_line_bounds"
+X = "select_line_above"
+G = "@gegl"

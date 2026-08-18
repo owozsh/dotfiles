@@ -1,0 +1,120 @@
+def home_abbrev [os_name] {
+  let is_home_in_path = ($env.PWD | str starts-with $nu.home-dir)
+  if $is_home_in_path {
+    if ($os_name =~ "windows") {
+      let home = ($nu.home-dir | str replace -ar '\\' '/')
+      let pwd = ($env.PWD | str replace -ar '\\' '/')
+      $pwd | str replace $home '~'
+    } else {
+      $env.PWD | str replace $nu.home-dir '~'
+    }
+  } else {
+    if ($os_name =~ "windows") {
+      # remove the C: from the path
+      $env.PWD | str replace -ar '\\' '/' | str substring 2..
+    } else {
+      $env.PWD
+    }
+  }
+}
+
+def get_branch_name [gs] {
+  let br = ($gs | get branch)
+  if $br == "no_branch" {
+    ""
+  } else {
+    $br
+  }
+}
+
+def git_diff_stat [] {
+  let stat = (git diff --stat | complete)
+
+  if $stat.exit_code != 0 { return "" }
+
+  let result = $stat.stdout
+    | tail -n -1
+    | parse --regex '(\d+) insertions?\(\+\).*?(\d+) deletions?\(-\)'
+    | rename added removed
+
+  if ($result | length) == 0 {
+    return ""
+  }
+
+  let added = $result.added | first
+  let removed = $result.removed | first
+
+  if ($added == "0" and $removed == "0") {
+    return ""
+  }
+
+  [
+    # "("
+    (ansi green)
+    "+"
+    $added
+    (char space)
+    (ansi red)
+    "-"
+    $removed
+    (ansi reset)
+    # ")"
+  ] | str join
+}
+
+def left_prompt [gs os] {
+  let display_path = home_abbrev $os.name | split row "/" | last
+  let branch_name = (get_branch_name $gs)
+
+  let is_home_in_path = ($env.PWD | str starts-with $nu.home-dir)
+
+  let path_segment = (
+      [
+        (ansi reset)
+        $display_path
+      ] | str join
+  )
+
+  let modified = $gs | get wt_modified
+  let deleted = $gs | get wt_deleted
+  let has_changes = $modified > 0 or $deleted > 0
+
+  let git_segment = (
+    if ($branch_name != "") {
+      [
+        (if $has_changes { ansi yellow } else { ansi cyan })
+        ($branch_name)
+        (ansi reset)
+      ] | str join
+    }
+  )
+
+  let dotfiles_dir = $"($env.HOME)/Developer/dotfiles"
+
+  let has_error = $env.LAST_EXIT_CODE != 0
+
+  let dotfiles_segment = (
+    [
+      (ansi reset)
+      (ansi red)
+      ("::")
+      (ansi reset)
+    ] | str join
+  )
+
+  [
+    $path_segment
+    $git_segment
+  ] | compact | str join " "
+}
+
+export def main [] {
+  let gs = (gstat)
+  let os = $nu.os-info
+  let left_prompt = (left_prompt $gs $os)
+  let use_ansi = (config use-colors)
+
+  {
+    left_prompt: (if $use_ansi { $left_prompt } else { $left_prompt | ansi strip })
+  }
+}

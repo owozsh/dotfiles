@@ -1,0 +1,4 @@
+inherits = "flexoki_dark"
+
+"ui.background" = { }
+"ui.bufferline.background" = { }
