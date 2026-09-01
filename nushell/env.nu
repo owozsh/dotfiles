@@ -33,7 +33,7 @@ $env.config.keybindings = [
     }
   }
   {
-    name: jump_to_project
+    name: jump_to_note
     modifier: control
     keycode: char_n
     mode: [emacs vi_normal vi_insert]

@@ -1,7 +1,10 @@
 theme = Flexoki Dark
-font-family = Source Code Pro
+font-family = Berkeley Mono
 font-size = 14
 unfocused-split-opacity = 1
 split-divider-color = #000000
 macos-option-as-alt = left
 command = "nu"
+gtk-titlebar = false
+window-padding-y = 14
+window-padding-x = 14
