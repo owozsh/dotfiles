@@ -1,13 +1,15 @@
 #!/bin/bash
+set -e
 
-rm -rf ~/.config/nvim
-ln -sf ~/Developer/dotfiles/nvim ~/.config/nvim
+DOTFILES="$HOME/Developer/dotfiles"
 
-rm -rf ~/.config/helix
-ln -sf ~/Developer/dotfiles/helix ~/.config/helix
+link() {
+  rm -rf "$2"
+  ln -s "$DOTFILES/$1" "$2"
+}
 
-rm -rf ~/.config/ghostty
-ln -sf ~/Developer/dotfiles/ghostty ~/.config/ghostty
-
-rm -rf ~/Library/Application\ Support/nushell
-ln -sf ~/Developer/dotfiles/nushell ~/Library/Application\ Support/nushell
+link nvim    "$HOME/.config/nvim"
+link helix   "$HOME/.config/helix"
+link ghostty "$HOME/.config/ghostty"
+link nushell "$HOME/Library/Application Support/nushell"
+link zshrc   "$HOME/.zshrc"

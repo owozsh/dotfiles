@@ -5,18 +5,20 @@ def "parse vars" [] {
 def --env "update-env" [] {
   for $var in $in {
     if $var.op == "set" {
-      if ($var.name | str upcase) == 'PATH' {
+      if ($var.name =~ '(?i)^path$') {
         $env.PATH = ($var.value | split row (char esep))
       } else {
         load-env {($var.name): $var.value}
       }
-    } else if $var.op == "hide" and $var.name in $env {
-      hide-env $var.name
+    } else if $var.op == "hide" {
+      try { hide-env $var.name }
     }
   }
 }
 export-env {
-  
+  $env.__MISE_ORIG_PATH = r#'/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Ghostty.app/Contents/MacOS:/opt/homebrew/bin:/usr/local/bin:/Users/nuver/.opencode/bin:/Users/nuver/.local/bin:/Users/nuver/.cargo/bin'#
+$env.PATH = (r#'/Users/nuver/.local/share/mise/shims:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Ghostty.app/Contents/MacOS:/opt/homebrew/bin:/usr/local/bin:/Users/nuver/.opencode/bin:/Users/nuver/.local/bin:/Users/nuver/.cargo/bin'# | split row (char esep))
+
   '' | parse vars | update-env
   $env.MISE_SHELL = "nu"
   let mise_hook = {
